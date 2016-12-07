@@ -11,6 +11,7 @@ import RxCocoa
 import RxRealm
 
 public typealias CellFactory<E: Object> = (RxTableViewRealmDataSource<E>, UITableView, IndexPath, E) -> UITableViewCell
+public typealias CellConfig<E: Object, CellType: UITableViewCell> = (CellType, IndexPath, E) -> Void
 
 public class RxTableViewRealmDataSource<E>: NSObject, UITableViewDataSource where E: Object {
 
@@ -24,6 +25,15 @@ public class RxTableViewRealmDataSource<E>: NSObject, UITableViewDataSource wher
     public init(cellIdentifier: String, cellFactory: @escaping CellFactory<E>) {
         self.cellIdentifier = cellIdentifier
         self.cellFactory = cellFactory
+    }
+
+    public init<CellType>(cellIdentifier: String, cellType: CellType.Type, cellConfig: @escaping CellConfig<E, CellType>) where CellType: UITableViewCell {
+        self.cellIdentifier = cellIdentifier
+        self.cellFactory = {ds, tv, ip, model in
+            let cell = tv.dequeueReusableCell(withIdentifier: cellIdentifier, for: ip) as! CellType
+            cellConfig(cell, ip, model)
+            return cell
+        }
     }
 
     //UITableViewDataSource

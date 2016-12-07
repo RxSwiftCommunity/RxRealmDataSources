@@ -39,10 +39,8 @@ class ViewController: UIViewController {
 
 
         // create data source
-        let dataSource = RxTableViewRealmDataSource<Lap>(cellIdentifier: "Cell") {ds, tv, ip, lap in
-            let cell = tv.dequeueReusableCell(withIdentifier: ds.cellIdentifier, for: ip) as! PersonCell
+        let dataSource = RxTableViewRealmDataSource<Lap>(cellIdentifier: "Cell", cellType: PersonCell.self) {cell, ip, lap in
             cell.customLabel.text = "\(ip.row). \(lap.text)"
-            return cell
         }
 
         // RxRealm to get Observable<Results>
