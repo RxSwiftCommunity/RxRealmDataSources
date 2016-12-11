@@ -50,7 +50,7 @@ public class RxCollectionViewRealmDataSource <E: Object>: NSObject, UICollection
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return cellFactory(self, collectionView, indexPath, items![indexPath.row] as! E)
+        return cellFactory(self, collectionView, indexPath, items![indexPath.row])
     }
 
     // MARK: - Applying changeset to the collection view

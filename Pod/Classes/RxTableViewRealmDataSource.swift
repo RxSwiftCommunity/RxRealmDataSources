@@ -58,7 +58,7 @@ public class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSou
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cellFactory(self, tableView, indexPath, items![indexPath.row] as! E)
+        return cellFactory(self, tableView, indexPath, items![indexPath.row])
     }
 
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
