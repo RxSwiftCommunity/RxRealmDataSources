@@ -10,14 +10,14 @@ import RxSwift
 import RxCocoa
 import RxRealm
 
-public class RealmBindObserver<O: Object, C: RealmCollection>: ObserverType {
-    typealias BindingType = (RxTableViewRealmDataSource<O>, C, RealmChangeset?) -> Void
+public class RealmBindObserver<O: Object, C: RealmCollection, DS>: ObserverType {
+    typealias BindingType = (DS, C, RealmChangeset?) -> Void
     public typealias E = (C, RealmChangeset?)
 
-    let dataSource: RxTableViewRealmDataSource<O>
+    let dataSource: DS
     let binding: BindingType
 
-    init(dataSource: RxTableViewRealmDataSource<O>, binding: @escaping BindingType) {
+    init(dataSource: DS, binding: @escaping BindingType) {
         self.dataSource = dataSource
         self.binding = binding
     }

@@ -10,8 +10,8 @@ import RxSwift
 import RxCocoa
 import RxRealm
 
-public typealias CellFactory<E: Object> = (RxTableViewRealmDataSource<E>, UITableView, IndexPath, E) -> UITableViewCell
-public typealias CellConfig<E: Object, CellType: UITableViewCell> = (CellType, IndexPath, E) -> Void
+public typealias TableCellFactory<E: Object> = (RxTableViewRealmDataSource<E>, UITableView, IndexPath, E) -> UITableViewCell
+public typealias TableCellConfig<E: Object, CellType: UITableViewCell> = (CellType, IndexPath, E) -> Void
 
 public class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSource {
 
@@ -31,14 +31,14 @@ public class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSou
 
     // MARK: - Init
     public let cellIdentifier: String
-    public let cellFactory: CellFactory<E>
+    public let cellFactory: TableCellFactory<E>
 
-    public init(cellIdentifier: String, cellFactory: @escaping CellFactory<E>) {
+    public init(cellIdentifier: String, cellFactory: @escaping TableCellFactory<E>) {
         self.cellIdentifier = cellIdentifier
         self.cellFactory = cellFactory
     }
 
-    public init<CellType>(cellIdentifier: String, cellType: CellType.Type, cellConfig: @escaping CellConfig<E, CellType>) where CellType: UITableViewCell {
+    public init<CellType>(cellIdentifier: String, cellType: CellType.Type, cellConfig: @escaping TableCellConfig<E, CellType>) where CellType: UITableViewCell {
         self.cellIdentifier = cellIdentifier
         self.cellFactory = {ds, tv, ip, model in
             let cell = tv.dequeueReusableCell(withIdentifier: cellIdentifier, for: ip) as! CellType
@@ -90,20 +90,16 @@ public class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSou
             return
         }
 
-        do {
-            let lastItemCount = tableView.numberOfRows(inSection: 0)
-            guard items.count == lastItemCount + changes.inserted.count - changes.deleted.count else {
-                tableView.reloadData()
-                return
-            }
-
-            tableView.beginUpdates()
-            tableView.deleteRows(at: changes.deleted.map(fromRow), with: rowAnimations.delete)
-            tableView.insertRows(at: changes.inserted.map(fromRow), with: rowAnimations.insert)
-            tableView.reloadRows(at: changes.updated.map(fromRow), with: rowAnimations.update)
-            tableView.endUpdates()
-        } catch {
+        let lastItemCount = tableView.numberOfRows(inSection: 0)
+        guard items.count == lastItemCount + changes.inserted.count - changes.deleted.count else {
             tableView.reloadData()
+            return
         }
+
+        tableView.beginUpdates()
+        tableView.deleteRows(at: changes.deleted.map(fromRow), with: rowAnimations.delete)
+        tableView.insertRows(at: changes.inserted.map(fromRow), with: rowAnimations.insert)
+        tableView.reloadRows(at: changes.updated.map(fromRow), with: rowAnimations.update)
+        tableView.endUpdates()
     }
 }
