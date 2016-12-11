@@ -3,7 +3,7 @@
 //  RxRealmDataSources
 //
 //  Created by Marin Todorov on 12/07/2016.
-//  Copyright (c) 2016 Marin Todorov. All rights reserved.
+//  Copyright (c) 2016 RxSwiftCommunity. All rights reserved.
 //
 
 import UIKit

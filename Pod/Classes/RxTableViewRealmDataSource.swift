@@ -2,8 +2,9 @@
 //  RxRealm extensions
 //
 //  Copyright (c) 2016 RxSwiftCommunity. All rights reserved.
+//  Check the LICENSE file for details
 //
-   
+
 import Foundation
 import RealmSwift
 import RxSwift
