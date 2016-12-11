@@ -7,36 +7,21 @@
 //
 
 import UIKit
+import RealmSwift
+
 import RxSwift
 import RxCocoa
-import RealmSwift
 import RxRealm
 import RxRealmDataSources
-
-class Lap: Object {
-    dynamic var text = Date().description
-}
-
-func delay(seconds: Double, completion: @escaping ()->Void) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: completion)
-}
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    let bag = DisposeBag()
+    private let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // load laps from Realm
-        var config = Realm.Configuration.defaultConfiguration
-        config.inMemoryIdentifier = "Memory"
-
-        let realm = try! Realm(configuration: config)
-        let results = realm.objects(Lap.self)
-
 
         // create data source
         let dataSource = RxTableViewRealmDataSource<Lap>(cellIdentifier: "Cell", cellType: PersonCell.self) {cell, ip, lap in
@@ -44,7 +29,8 @@ class ViewController: UIViewController {
         }
 
         // RxRealm to get Observable<Results>
-        let laps = Observable.changesetFrom(results)
+        let realm = try! Realm(configuration: DataRandomizer.realmConfig)
+        let laps = Observable.changesetFrom(realm.objects(Timer.self).first!.laps)
             .share()
 
         // bind to table view
@@ -54,21 +40,14 @@ class ViewController: UIViewController {
 
         // bind to vc title
         laps
-            .map { results, _ in
+            .map {results, _ in
                 return "\(results.count) laps"
             }
             .bindTo(rx.title)
             .addDisposableTo(bag)
 
-        // insert some laps
-        for i in 0...200 {
-            delay(seconds: Double(i)/2, completion: {
-                let realm = try! Realm(configuration: config)
-                try! realm.write {
-                    realm.add(Lap())
-                }
-            })
-        }
+        // demo inserting and deleting data
+        DataRandomizer().start()
     }
 }
 

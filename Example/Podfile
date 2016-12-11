@@ -4,7 +4,7 @@ target 'RxRealmDataSources_Example' do
   pod 'RealmSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'RxRealm'
+  pod 'RxRealm', :git => "https://github.com/RxSwiftCommunity/RxRealm.git", :branch => "mt-datasources"
   pod 'RxRealmDataSources', :path => '../'
 
   target 'RxRealmDataSources_Tests' do
