@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private let bag = DisposeBag()
+    private let data = DataRandomizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,7 @@ class ViewController: UIViewController {
             .addDisposableTo(bag)
 
         // demo inserting and deleting data
-        DataRandomizer().start()
+        data.start()
     }
 }
 

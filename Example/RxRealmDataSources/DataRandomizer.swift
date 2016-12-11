@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import RxSwift
 
 extension Int {
     public func random() -> Int {
@@ -17,15 +18,19 @@ extension Int {
 
 class DataRandomizer {
 
-    static var realmConfig: Realm.Configuration = {
+    private let bag = DisposeBag()
+    static let realmConfig = DataRandomizer.config()
+
+    static func config() -> Realm.Configuration {
         var config = Realm.Configuration.defaultConfiguration
-        config.inMemoryIdentifier = "Memory"
+        config.deleteRealmIfMigrationNeeded = true
         let realm = try! Realm(configuration: config)
         try! realm.write {
+            realm.deleteAll()
             realm.add(Timer())
         }
         return config
-    }()
+    }
 
     private lazy var realm: Realm = {
         return try! Realm(configuration: DataRandomizer.realmConfig)
@@ -35,11 +40,9 @@ class DataRandomizer {
         try! realm.write {
             let timerLaps = realm.objects(Timer.self).first!.laps
             let index = timerLaps.count.random()
-            //timerLaps.insert(Lap(), at: index)
-            timerLaps.append(Lap())
+            timerLaps.insert(Lap(), at: index)
             print("insert at [\(index)]")
         }
-        delay(seconds: 0.5, completion: insertRow)
     }
 
     private func updateRow() {
@@ -49,7 +52,6 @@ class DataRandomizer {
             timerLaps[index].text = ">" + timerLaps[index].text
             print("update at [\(index)]")
         }
-        delay(seconds: 0.5, completion: updateRow)
     }
 
     private func deleteRow() {
@@ -59,13 +61,26 @@ class DataRandomizer {
             timerLaps.remove(objectAtIndex: index)
             print("delete from [\(index)]")
         }
-        delay(seconds: 1.0, completion: deleteRow)
     }
 
     func start() {
         // insert some laps
-        insertRow()
-        delay(seconds: 0.5, completion: updateRow)
-        delay(seconds: 1.0, completion: deleteRow)
+        Observable<Int>.interval(0.5, scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] _ in
+                self?.insertRow()
+            })
+            .addDisposableTo(bag)
+
+        Observable<Int>.interval(0.5, scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] _ in
+                self?.updateRow()
+            })
+            .addDisposableTo(bag)
+
+        Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+            .subscribe(onNext: {[weak self] _ in
+                self?.deleteRow()
+            })
+            .addDisposableTo(bag)
     }
 }
