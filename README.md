@@ -1,29 +1,78 @@
 # RxRealmDataSources
 
-[![CI Status](http://img.shields.io/travis/Marin Todorov/RxRealmDataSources.svg?style=flat)](https://travis-ci.org/Marin Todorov/RxRealmDataSources)
 [![Version](https://img.shields.io/cocoapods/v/RxRealmDataSources.svg?style=flat)](http://cocoapods.org/pods/RxRealmDataSources)
 [![License](https://img.shields.io/cocoapods/l/RxRealmDataSources.svg?style=flat)](http://cocoapods.org/pods/RxRealmDataSources)
 [![Platform](https://img.shields.io/cocoapods/p/RxRealmDataSources.svg?style=flat)](http://cocoapods.org/pods/RxRealmDataSources)
+
+This library is currently WIP.
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## Usage
+
+This library is a light data source implementation for `RxRealm`. It allows you to easily bind an Observable sequence of Realm objects to a table or collection view.
+
+### Binding to a table view
+
+Check out the included demo app to see this in action.
+
+```swift
+// create data source
+let dataSource = RxTableViewRealmDataSource<Lap>(cellIdentifier: "Cell", cellType: PersonCell.self) {cell, ip, lap in
+    cell.customLabel.text = "\(ip.row). \(lap.text)"
+}
+
+// RxRealm to get Observable<Results>
+let realm = try! Realm(configuration: DataRandomizer.realmConfig)
+let laps = Observable.changesetFrom(realm.objects(Timer.self).first!.laps)
+    .share()
+
+// bind to table view
+laps
+    .bindTo(tableView.rx.realmChanges(dataSource))
+    .addDisposableTo(bag)
+```
+
+### Binding to a collection view
+
+Check out the included demo app to see this in action.
+
+```swift
+// create data source
+let dataSource = RxCollectionViewRealmDataSource<Lap>(cellIdentifier: "Cell", cellType: LapCollectionCell.self) {cell, ip, lap in
+    cell.customLabel.text = "\(ip.row). \(lap.text)"
+}
+
+// RxRealm to get Observable<Results>
+let realm = try! Realm(configuration: DataRandomizer.realmConfig)
+let laps = Observable.changesetFrom(realm.objects(Timer.self).first!.laps)
+    .share()
+
+// bind to collection view
+laps
+    .bindTo(collectionView.rx.realmChanges(dataSource))
+    .addDisposableTo(bag)
+```
 
 ## Installation
 
-RxRealmDataSources is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+This library depends on __RxSwift__,  __RealmSwift__, and __RxRealm__.
+
+#### CocoaPods
+RxRealm is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod "RxRealmDataSources"
 ```
 
-## Author
+## TODO
 
-Marin Todorov, marin@underplot.com
+* Test add platforms and add compatibility for the pod
 
 ## License
 
-RxRealmDataSources is available under the MIT license. See the LICENSE file for more info.
+This library belongs to _RxSwiftCommunity_. It has been created by Marin Todorov.
+
+RxRealm is available under the MIT license. See the LICENSE file for more info.
