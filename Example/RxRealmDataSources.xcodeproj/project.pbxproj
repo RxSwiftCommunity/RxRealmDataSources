@@ -560,7 +560,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F8E8F0B4B2A0D71CF549B85 /* Pods-RxRealmDataSources_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9MF8G8D9Y5;
 				INFOPLIST_FILE = RxRealmDataSources/Info.plist;
@@ -576,7 +576,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC02907133053010FAE53FD9 /* Pods-RxRealmDataSources_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9MF8G8D9Y5;
 				INFOPLIST_FILE = RxRealmDataSources/Info.plist;
