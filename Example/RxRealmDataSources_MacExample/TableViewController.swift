@@ -36,10 +36,8 @@ class TableViewController: NSViewController {
             .share()
 
         // bind to table view
-        let binder = tableView.rx.realmChanges(dataSource)
-
         laps
-            .bindTo(binder)
+            .bindTo(tableView.rx.realmChanges(dataSource))
             .addDisposableTo(bag)
 
         // bind to window title

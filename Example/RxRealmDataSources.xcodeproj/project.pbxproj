@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		145AC3CBCB09D8F547291B1D /* Pods_Demo_RxRealmDataSources_MacExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F784B7D7B4997170AC744C0 /* Pods_Demo_RxRealmDataSources_MacExample.framework */; };
+		2955937CB69742E1E6EB468E /* Pods_Demo_RxRealmDataSources_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678ED4D6B7FB3D0B89984A16 /* Pods_Demo_RxRealmDataSources_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		6A9064A3DEA260E4CB45D90A /* Pods_Demo_RxRealmDataSources_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075906389CE579BE356249D4 /* Pods_Demo_RxRealmDataSources_Example.framework */; };
 		9C530D081DFDD7340096144C /* DataRandomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C530D071DFDD7340096144C /* DataRandomizer.swift */; };
 		9C5B02D21E1678C80009FBDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B02D11E1678C80009FBDE /* AppDelegate.swift */; };
 		9C5B02D61E1678C80009FBDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C5B02D51E1678C80009FBDE /* Assets.xcassets */; };
@@ -31,10 +32,7 @@
 		9CA89C651DFDF1A4008ADCD2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA89C641DFDF1A4008ADCD2 /* CollectionViewController.swift */; };
 		9CB0B5751DF9E9E800F947D0 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0B5741DF9E9E800F947D0 /* Lap.swift */; };
 		9CB0B5771DF9EA0F00F947D0 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0B5761DF9EA0F00F947D0 /* Timer.swift */; };
-		C13F087644B4B4D60EEB8ED8 /* Pods_RxRealmDataSources_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25715AB3D455156C4C56E8A /* Pods_RxRealmDataSources_Example.framework */; };
-		C8F17C24E2BFA65788F02553 /* Pods_RxRealmDataSources_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2A0E06F67E8075384C461B /* Pods_RxRealmDataSources_Tests.framework */; };
-		F521FEDCDEE481992464640F /* Pods_Demo_RxRealmDataSources_MacExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFB71856417AF895047718D /* Pods_Demo_RxRealmDataSources_MacExample.framework */; };
-		F76F2F31CEA2B540D8054472 /* Pods_Demo_RxRealmDataSources_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08BBF43137C5B24962661DFA /* Pods_Demo_RxRealmDataSources_Tests.framework */; };
+		A0F623D0059D4D5BF38B60D9 /* Pods_Demo_RxRealmDataSources_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CAA1529C0E19B1E708B0776 /* Pods_Demo_RxRealmDataSources_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,16 +46,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		075906389CE579BE356249D4 /* Pods_Demo_RxRealmDataSources_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_RxRealmDataSources_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		08BBF43137C5B24962661DFA /* Pods_Demo_RxRealmDataSources_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_RxRealmDataSources_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2234A7252CB12801B9D5CC59 /* RxRealmDataSources.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RxRealmDataSources.podspec; path = ../RxRealmDataSources.podspec; sourceTree = "<group>"; };
 		2BFC2E5B87B46AEC0715AB69 /* Pods-RxRealmDataSources_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxRealmDataSources_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxRealmDataSources_Tests/Pods-RxRealmDataSources_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		389E1B2B7B345E4DD32A154F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		3CAA1529C0E19B1E708B0776 /* Pods_Demo_RxRealmDataSources_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_RxRealmDataSources_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FC4E7E2D70508F61AC94626 /* Pods-RxRealmDataSources_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxRealmDataSources_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxRealmDataSources_Tests/Pods-RxRealmDataSources_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		433CFEEAC500E1915E943474 /* Pods-Demo-RxRealmDataSources_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-RxRealmDataSources_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-RxRealmDataSources_Example/Pods-Demo-RxRealmDataSources_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		4F784B7D7B4997170AC744C0 /* Pods_Demo_RxRealmDataSources_MacExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_RxRealmDataSources_MacExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* RxRealmDataSources_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxRealmDataSources_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = RxRealmDataSources/AppDelegate.swift; sourceTree = "<group>"; };
+		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -66,9 +64,9 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		608B2F81EBE23EAF84A87062 /* Pods-Demo-RxRealmDataSources_MacExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-RxRealmDataSources_MacExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-RxRealmDataSources_MacExample/Pods-Demo-RxRealmDataSources_MacExample.debug.xcconfig"; sourceTree = "<group>"; };
+		678ED4D6B7FB3D0B89984A16 /* Pods_Demo_RxRealmDataSources_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_RxRealmDataSources_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EBE80B271B15C2CEC56038E /* Pods-Demo-RxRealmDataSources_MacExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-RxRealmDataSources_MacExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-RxRealmDataSources_MacExample/Pods-Demo-RxRealmDataSources_MacExample.release.xcconfig"; sourceTree = "<group>"; };
 		6F8E8F0B4B2A0D71CF549B85 /* Pods-RxRealmDataSources_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxRealmDataSources_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxRealmDataSources_Example/Pods-RxRealmDataSources_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		8EFB71856417AF895047718D /* Pods_Demo_RxRealmDataSources_MacExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_RxRealmDataSources_MacExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BB71D2BBF16D9A1E926201 /* Pods-Demo-RxRealmDataSources_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-RxRealmDataSources_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-RxRealmDataSources_Tests/Pods-Demo-RxRealmDataSources_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9C530D071DFDD7340096144C /* DataRandomizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRandomizer.swift; path = RxRealmDataSources/DataRandomizer.swift; sourceTree = "<group>"; };
 		9C5B02CF1E1678C80009FBDE /* RxRealmDataSources_MacExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxRealmDataSources_MacExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,9 +84,7 @@
 		9CA89C641DFDF1A4008ADCD2 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		9CB0B5741DF9E9E800F947D0 /* Lap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
 		9CB0B5761DF9EA0F00F947D0 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
-		AC2A0E06F67E8075384C461B /* Pods_RxRealmDataSources_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxRealmDataSources_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC02907133053010FAE53FD9 /* Pods-RxRealmDataSources_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxRealmDataSources_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxRealmDataSources_Example/Pods-RxRealmDataSources_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C25715AB3D455156C4C56E8A /* Pods_RxRealmDataSources_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxRealmDataSources_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC39AF64C9AE4D3B6F7655F /* Pods-Demo-RxRealmDataSources_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-RxRealmDataSources_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-RxRealmDataSources_Tests/Pods-Demo-RxRealmDataSources_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E709FF280BD1C0E98E09724E /* Pods-Demo-RxRealmDataSources_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-RxRealmDataSources_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-RxRealmDataSources_Example/Pods-Demo-RxRealmDataSources_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F047F94251BA9258A7A94AEE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -99,8 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C13F087644B4B4D60EEB8ED8 /* Pods_RxRealmDataSources_Example.framework in Frameworks */,
-				6A9064A3DEA260E4CB45D90A /* Pods_Demo_RxRealmDataSources_Example.framework in Frameworks */,
+				A0F623D0059D4D5BF38B60D9 /* Pods_Demo_RxRealmDataSources_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,8 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8F17C24E2BFA65788F02553 /* Pods_RxRealmDataSources_Tests.framework in Frameworks */,
-				F76F2F31CEA2B540D8054472 /* Pods_Demo_RxRealmDataSources_Tests.framework in Frameworks */,
+				2955937CB69742E1E6EB468E /* Pods_Demo_RxRealmDataSources_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F521FEDCDEE481992464640F /* Pods_Demo_RxRealmDataSources_MacExample.framework in Frameworks */,
+				145AC3CBCB09D8F547291B1D /* Pods_Demo_RxRealmDataSources_MacExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,11 +121,9 @@
 		58AC3B8249FCD1A734C4B7BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C25715AB3D455156C4C56E8A /* Pods_RxRealmDataSources_Example.framework */,
-				AC2A0E06F67E8075384C461B /* Pods_RxRealmDataSources_Tests.framework */,
-				075906389CE579BE356249D4 /* Pods_Demo_RxRealmDataSources_Example.framework */,
-				8EFB71856417AF895047718D /* Pods_Demo_RxRealmDataSources_MacExample.framework */,
-				08BBF43137C5B24962661DFA /* Pods_Demo_RxRealmDataSources_Tests.framework */,
+				3CAA1529C0E19B1E708B0776 /* Pods_Demo_RxRealmDataSources_Example.framework */,
+				4F784B7D7B4997170AC744C0 /* Pods_Demo_RxRealmDataSources_MacExample.framework */,
+				678ED4D6B7FB3D0B89984A16 /* Pods_Demo_RxRealmDataSources_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,7 +134,6 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				9C5B02C91E1678320009FBDE /* Cross Platform Classes */,
 				607FACD21AFB9204008FA782 /* iOS Example */,
-				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				9C5B02D01E1678C80009FBDE /* macOS Example */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
@@ -164,6 +155,7 @@
 		607FACD21AFB9204008FA782 /* iOS Example */ = {
 			isa = PBXGroup;
 			children = (
+				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				9C5B02CA1E1678530009FBDE /* View Controllers */,
 				9C530D091DFDDDEC0096144C /* Assets */,
 			);
@@ -238,9 +230,9 @@
 		9C5B02D01E1678C80009FBDE /* macOS Example */ = {
 			isa = PBXGroup;
 			children = (
-				9C5B02DF1E1678EF0009FBDE /* View Controllers */,
-				9C5B02DE1E1678E70009FBDE /* Assets */,
 				9C5B02D11E1678C80009FBDE /* AppDelegate.swift */,
+				9C5B02DE1E1678E70009FBDE /* Assets */,
+				9C5B02DF1E1678EF0009FBDE /* View Controllers */,
 			);
 			name = "macOS Example";
 			path = RxRealmDataSources_MacExample;

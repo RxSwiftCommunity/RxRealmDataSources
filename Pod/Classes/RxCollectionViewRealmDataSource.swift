@@ -193,9 +193,10 @@ import Cocoa
             }
 
             collectionView.performBatchUpdates({[unowned self] in
-                collectionView.deleteItems(at: Set(changes.deleted.map(self.fromRow)))
-                collectionView.reloadItems(at: Set(changes.updated.map(self.fromRow)))
-                collectionView.insertItems(at: Set(changes.inserted.map(self.fromRow)))
+                //TODO: this should be animated, but doesn't seem to be?
+                collectionView.animator().deleteItems(at: Set(changes.deleted.map(self.fromRow)))
+                collectionView.animator().reloadItems(at: Set(changes.updated.map(self.fromRow)))
+                collectionView.animator().insertItems(at: Set(changes.inserted.map(self.fromRow)))
             }, completionHandler: nil)
         }
     }
