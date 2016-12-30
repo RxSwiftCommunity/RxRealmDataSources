@@ -30,7 +30,7 @@ class CollectionViewController: UIViewController {
         }
 
         // RxRealm to get Observable<Results>
-        let realm = try! Realm(configuration: DataRandomizer.realmConfig)
+        let realm = try! Realm(configuration: data.config)
         let laps = Observable.changesetFrom(realm.objects(Timer.self).first!.laps)
             .share()
 

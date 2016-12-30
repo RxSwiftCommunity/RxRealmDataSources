@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Dispatch
 import RealmSwift
 import RxSwift
 
@@ -19,22 +20,35 @@ extension Int {
 class DataRandomizer {
 
     private let bag = DisposeBag()
-    static let realmConfig = DataRandomizer.config()
 
-    static func config() -> Realm.Configuration {
+    lazy var config: Realm.Configuration = {
         var config = Realm.Configuration.defaultConfiguration
-        config.deleteRealmIfMigrationNeeded = true
-        let realm = try! Realm(configuration: config)
+        config.inMemoryIdentifier = UUID().uuidString
+        return config
+    }()
+
+    private lazy var realm: Realm = {
+        let realm: Realm
+        do {
+            realm = try Realm(configuration: self.config)
+            return realm
+        }
+        catch let e {
+            print(e)
+            fatalError()
+        }
+    }()
+
+    init() {
+        reset()
+    }
+
+    func reset() {
         try! realm.write {
             realm.deleteAll()
             realm.add(Timer())
         }
-        return config
     }
-
-    private lazy var realm: Realm = {
-        return try! Realm(configuration: DataRandomizer.realmConfig)
-    }()
 
     private func insertRow() {
         try! realm.write {
@@ -77,7 +91,7 @@ class DataRandomizer {
             })
             .addDisposableTo(bag)
 
-        Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+        Observable<Int>.interval(1.2, scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.deleteRow()
             })
