@@ -24,8 +24,6 @@ class TableViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        data.reset()
-
         // create data source
         let dataSource = RxTableViewRealmDataSource<Lap>(cellIdentifier: "Cell", cellType: NSTableCellView.self) {cell, row, lap in
             cell.textField!.stringValue = "\(lap.text)"
@@ -56,10 +54,6 @@ class TableViewController: NSViewController {
 
         // demo inserting and deleting data
         data.start()
-    }
-
-    deinit {
-        print("close VC")
     }
 }
 

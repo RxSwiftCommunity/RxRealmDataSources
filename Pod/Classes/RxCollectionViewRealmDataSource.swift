@@ -116,6 +116,9 @@ import Cocoa
         public let itemIdentifier: String
         public let itemFactory: CollectionItemFactory<E>
 
+        public weak var delegate: NSCollectionViewDelegate?
+        public weak var dataSource: NSCollectionViewDataSource?
+
         public init(itemIdentifier: String, itemFactory: @escaping CollectionItemFactory<E>) {
             self.itemIdentifier = itemIdentifier
             self.itemFactory = itemFactory
@@ -142,6 +145,23 @@ import Cocoa
         @available(OSX 10.11, *)
         public func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
             return itemFactory(self, collectionView, indexPath, items![indexPath.item])
+        }
+
+        // MARK: - Proxy unimplemented data source and delegate methods
+        public override func responds(to aSelector: Selector!) -> Bool {
+            if RxCollectionViewRealmDataSource.instancesRespond(to: aSelector) {
+                return true
+            } else if let delegate = delegate {
+                return delegate.responds(to: aSelector)
+            } else if let dataSource = dataSource {
+                return dataSource.responds(to: aSelector)
+            } else {
+                return false
+            }
+        }
+
+        public override func forwardingTarget(for aSelector: Selector!) -> Any? {
+            return delegate ?? dataSource
         }
 
         // MARK: - Applying changeset to the collection view

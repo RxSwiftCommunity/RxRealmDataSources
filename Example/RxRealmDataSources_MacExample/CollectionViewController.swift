@@ -24,15 +24,12 @@ class CollectionViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //configureCollectionView()
-        
-        data.reset()
 
         // create data source
         let dataSource = RxCollectionViewRealmDataSource<Lap>(itemIdentifier: "CollectionItem", itemType: CollectionItem.self) {cell, row, lap in
             cell.text.stringValue = "\(lap.text)"
         }
-        //dataSource.delegate = self
+        dataSource.delegate = self
 
         // RxRealm to get Observable<Results>
         let realm = try! Realm(configuration: data.config)
@@ -59,8 +56,8 @@ class CollectionViewController: NSViewController {
         // demo inserting and deleting data
         data.start()
     }
+}
 
-    deinit {
-        print("close VC")
-    }
+extension CollectionViewController: NSCollectionViewDelegate {
+
 }

@@ -16,7 +16,7 @@ class MenuViewController: NSViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        tableView.selectRowIndexes(IndexSet([1]), byExtendingSelection: false)
+        tableView.selectRowIndexes(IndexSet([0]), byExtendingSelection: false)
     }
 }
 
@@ -41,6 +41,7 @@ extension MenuViewController: NSTableViewDelegate {
         if tableView.selectedRow > -1 {
             if let split = parent as? NSSplitViewController, split.childViewControllers.count > 1,
                 let targetVC = storyboard?.instantiateController(withIdentifier: targetNames[tableView.selectedRow]) as? NSViewController {
+
                 split.childViewControllers.replaceSubrange(1...1, with: [targetVC])
             }
         }

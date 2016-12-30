@@ -39,8 +39,11 @@ class DataRandomizer {
         }
     }()
 
+    init() {
+        reset()
+    }
+
     func reset() {
-        let realm = try! Realm(configuration: config)
         try! realm.write {
             realm.deleteAll()
             realm.add(Timer())
@@ -88,7 +91,7 @@ class DataRandomizer {
             })
             .addDisposableTo(bag)
 
-        Observable<Int>.interval(1.25, scheduler: MainScheduler.instance)
+        Observable<Int>.interval(1.2, scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.deleteRow()
             })

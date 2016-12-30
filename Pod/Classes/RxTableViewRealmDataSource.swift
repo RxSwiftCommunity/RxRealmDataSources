@@ -132,8 +132,8 @@ import RxRealm
             update: NSTableViewAnimationOptions.effectFade,
             delete: NSTableViewAnimationOptions.effectFade)
 
-        public var delegate: NSTableViewDelegate?
-        public var dataSource: NSTableViewDataSource?
+        public weak var delegate: NSTableViewDelegate?
+        public weak var dataSource: NSTableViewDataSource?
 
         // MARK: - Init
         public let cellIdentifier: String
