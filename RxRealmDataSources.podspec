@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name             = 'RxRealmDataSources'
-  s.version          = '0.1.2'
+  s.version          = '0.2.0'
   s.summary          = 'Rx data sources for RxRealm`s observable types'
 
   s.description      = <<-DESC
@@ -26,5 +26,5 @@ Pod::Spec.new do |s|
   s.dependency 'RealmSwift', '~> 2.1'
   s.dependency 'RxSwift',    '~> 3.1'
   s.dependency 'RxCocoa',    '~> 3.1'
-  s.dependency 'RxRealm',    '~> 0.4.0'
+  s.dependency 'RxRealm',    '~> 0.4.1'
 end
