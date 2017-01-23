@@ -392,7 +392,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -402,6 +402,7 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9MF8G8D9Y5;
 						LastSwiftMigration = 0810;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -768,7 +769,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 433CFEEAC500E1915E943474 /* Pods-Demo-RxRealmDataSources_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9MF8G8D9Y5;
 				INFOPLIST_FILE = RxRealmDataSources/Info.plist;
@@ -784,7 +785,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E709FF280BD1C0E98E09724E /* Pods-Demo-RxRealmDataSources_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9MF8G8D9Y5;
 				INFOPLIST_FILE = RxRealmDataSources/Info.plist;
@@ -800,6 +801,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 99BB71D2BBF16D9A1E926201 /* Pods-Demo-RxRealmDataSources_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 9MF8G8D9Y5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -820,6 +823,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DFC39AF64C9AE4D3B6F7655F /* Pods-Demo-RxRealmDataSources_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 9MF8G8D9Y5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -836,6 +841,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 608B2F81EBE23EAF84A87062 /* Pods-Demo-RxRealmDataSources_MacExample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -859,6 +865,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EBE80B271B15C2CEC56038E /* Pods-Demo-RxRealmDataSources_MacExample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;

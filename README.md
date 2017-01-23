@@ -26,7 +26,7 @@ let dataSource = RxTableViewRealmDataSource<Lap>(cellIdentifier: "Cell", cellTyp
 
 // RxRealm to get Observable<Results>
 let realm = try! Realm(configuration: DataRandomizer.realmConfig)
-let laps = Observable.changesetFrom(realm.objects(Timer.self).first!.laps)
+let laps = Observable.changeset(from: realm.objects(Timer.self).first!.laps)
     .share()
 
 // bind to table view
@@ -47,7 +47,7 @@ let dataSource = RxCollectionViewRealmDataSource<Lap>(cellIdentifier: "Cell", ce
 
 // RxRealm to get Observable<Results>
 let realm = try! Realm(configuration: DataRandomizer.realmConfig)
-let laps = Observable.changesetFrom(realm.objects(Timer.self).first!.laps)
+let laps = Observable.changeset(from: realm.objects(Timer.self).first!.laps)
     .share()
 
 // bind to collection view
