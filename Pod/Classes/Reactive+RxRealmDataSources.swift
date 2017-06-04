@@ -29,6 +29,20 @@ extension Reactive where Base: UITableView {
                 ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
             }
     }
+	
+	public func realmModelSelected<E>(_ modelType: E.Type) -> ControlEvent<E> where E: RealmSwift.Object {
+		
+		let source: Observable<E> = self.itemSelected.flatMap { [weak view = self.base as UITableView] indexPath -> Observable<E> in
+			guard let view = view, let ds = view.dataSource as? RxTableViewRealmDataSource<E> else {
+				return Observable.empty()
+			}
+			
+			return Observable.just(ds.model(at: indexPath))
+		}
+		
+		return ControlEvent(events: source)
+	}
+
 }
 
 extension Reactive where Base: UICollectionView {

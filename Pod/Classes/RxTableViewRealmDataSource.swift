@@ -53,6 +53,10 @@ import RxRealm
                 return cell
             }
         }
+			
+			public func model(at indexPath: IndexPath) -> E {
+				return items![indexPath.row]
+			}
 
         // MARK: - UITableViewDataSource protocol
         public func numberOfSections(in tableView: UITableView) -> Int {
