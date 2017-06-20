@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name             = 'RxRealmDataSources'
-  s.version          = '0.2.1'
+  s.version          = '0.2.2'
   s.summary          = 'Rx data sources for RxRealm`s observable types'
 
   s.description      = <<-DESC

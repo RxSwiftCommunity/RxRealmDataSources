@@ -17,7 +17,6 @@ import RxRealmDataSources
 class CollectionViewController: NSViewController {
 
     @IBOutlet var collectionView: NSCollectionView!
-    
 
     private let bag = DisposeBag()
     private let data = DataRandomizer()
