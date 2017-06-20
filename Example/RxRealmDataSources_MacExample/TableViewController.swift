@@ -32,12 +32,12 @@ class TableViewController: NSViewController {
 
         // RxRealm to get Observable<Results>
         let realm = try! Realm(configuration: data.config)
-        let laps = Observable.changesetFrom(realm.objects(Timer.self).first!.laps)
+        let laps = Observable.changeset(from: realm.objects(Timer.self).first!.laps)
             .share()
 
         // bind to table view
         laps
-            .bindTo(tableView.rx.realmChanges(dataSource))
+            .bind(to: tableView.rx.realmChanges(dataSource))
             .addDisposableTo(bag)
 
         // bind to window title

@@ -46,6 +46,11 @@ import RxRealm
             }
         }
 
+        // MARK: - Data access
+        public func model(at indexPath: IndexPath) -> E {
+            return items![indexPath.row]
+        }
+
         // MARK: - UICollectionViewDataSource protocol
         public func numberOfSections(in collectionView: UICollectionView) -> Int {
             return 1

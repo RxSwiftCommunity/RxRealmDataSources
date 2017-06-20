@@ -79,19 +79,19 @@ class DataRandomizer {
 
     func start() {
         // insert some laps
-        Observable<Int>.interval(0.5, scheduler: MainScheduler.instance)
+        Observable<Int>.interval(1.0, scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.insertRow()
             })
             .addDisposableTo(bag)
 
-        Observable<Int>.interval(0.5, scheduler: MainScheduler.instance)
+        Observable<Int>.interval(1.0, scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.updateRow()
             })
             .addDisposableTo(bag)
 
-        Observable<Int>.interval(1.2, scheduler: MainScheduler.instance)
+        Observable<Int>.interval(2.4, scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.deleteRow()
             })

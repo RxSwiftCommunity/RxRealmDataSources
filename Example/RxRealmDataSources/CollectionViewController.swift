@@ -36,7 +36,7 @@ class CollectionViewController: UIViewController {
 
         // bind to collection view
         laps
-            .bindTo(collectionView.rx.realmChanges(dataSource))
+            .bind(to: collectionView.rx.realmChanges(dataSource))
             .addDisposableTo(bag)
 
         // bind to vc title
@@ -44,8 +44,14 @@ class CollectionViewController: UIViewController {
             .map {results, _ in
                 return "\(results.count) laps"
             }
-            .bindTo(rx.title)
+            .bind(to: rx.title)
             .addDisposableTo(bag)
+
+        // react on cell taps
+        collectionView.rx.realmModelSelected(Lap.self)
+            .map({ $0.text })
+            .bind(to: rx.title)
+            .disposed(by: bag)
 
         // demo inserting and deleting data
         data.start()
