@@ -32,7 +32,7 @@ let laps = Observable.changeset(from: realm.objects(Timer.self).first!.laps)
 // bind to table view
 laps
     .bindTo(tableView.rx.realmChanges(dataSource))
-    .addDisposableTo(bag)
+    .disposed(by: bag)
 ```
 
 ### Binding to a collection view
@@ -53,7 +53,7 @@ let laps = Observable.changeset(from: realm.objects(Timer.self).first!.laps)
 // bind to collection view
 laps
     .bindTo(collectionView.rx.realmChanges(dataSource))
-    .addDisposableTo(bag)
+    .disposed(by: bag)
 ```
 
 ## Installation

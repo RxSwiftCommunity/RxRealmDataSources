@@ -83,18 +83,18 @@ class DataRandomizer {
             .subscribe(onNext: {[weak self] _ in
                 self?.insertRow()
             })
-            .addDisposableTo(bag)
+            .disposed(by: bag)
 
         Observable<Int>.interval(1.0, scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.updateRow()
             })
-            .addDisposableTo(bag)
+            .disposed(by: bag)
 
         Observable<Int>.interval(2.4, scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.deleteRow()
             })
-            .addDisposableTo(bag)
+            .disposed(by: bag)
     }
 }

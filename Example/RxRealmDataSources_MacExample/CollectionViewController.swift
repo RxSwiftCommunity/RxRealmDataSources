@@ -41,7 +41,7 @@ class CollectionViewController: NSViewController {
 
         laps
             .bind(to: binder)
-            .addDisposableTo(bag)
+            .disposed(by: bag)
 
         // bind to window title
         laps
@@ -51,7 +51,7 @@ class CollectionViewController: NSViewController {
             .subscribe(onNext: {title in
                 NSApp.windows.first?.title = title
             })
-            .addDisposableTo(bag)
+            .disposed(by: bag)
 
         // demo inserting and deleting data
         data.start()

@@ -38,7 +38,7 @@ class TableViewController: NSViewController {
         // bind to table view
         laps
             .bind(to: tableView.rx.realmChanges(dataSource))
-            .addDisposableTo(bag)
+            .disposed(by: bag)
 
         // bind to window title
         laps
@@ -48,7 +48,7 @@ class TableViewController: NSViewController {
             .subscribe(onNext: {title in
                 NSApp.windows.first?.title = title
             })
-            .addDisposableTo(bag)
+            .disposed(by: bag)
 
         // demo inserting and deleting data
         data.start()

@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         // bind to table view
         laps
             .bind(to: tableView.rx.realmChanges(dataSource))
-            .addDisposableTo(bag)
+            .disposed(by: bag)
 
         // bind to vc title
         laps
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
                 return "\(results.count) laps"
             }
             .bind(to: rx.title)
-            .addDisposableTo(bag)
+            .disposed(by: bag)
 
         // react on cell taps
         tableView.rx.realmModelSelected(Lap.self)
