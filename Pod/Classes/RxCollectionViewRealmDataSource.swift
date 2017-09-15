@@ -108,7 +108,7 @@ import Cocoa
     public typealias CollectionItemFactory<E: Object> = (RxCollectionViewRealmDataSource<E>, NSCollectionView, IndexPath, E) -> NSCollectionViewItem
     public typealias CollectionItemConfig<E: Object, ItemType: NSCollectionViewItem> = (ItemType, IndexPath, E) -> Void
 
-    public class RxCollectionViewRealmDataSource <E: Object>: NSObject, NSCollectionViewDataSource {
+    open class RxCollectionViewRealmDataSource <E: Object>: NSObject, NSCollectionViewDataSource {
 
         private var items: AnyRealmCollection<E>?
 

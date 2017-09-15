@@ -20,7 +20,7 @@ import RxRealm
     public typealias TableCellFactory<E: Object> = (RxTableViewRealmDataSource<E>, UITableView, IndexPath, E) -> UITableViewCell
     public typealias TableCellConfig<E: Object, CellType: UITableViewCell> = (CellType, IndexPath, E) -> Void
 
-    public class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSource {
+    open class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSource {
 
         private var items: AnyRealmCollection<E>?
 
