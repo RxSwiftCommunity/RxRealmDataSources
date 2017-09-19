@@ -132,7 +132,7 @@ import Cocoa
         public init<ItemType>(itemIdentifier: String, itemType: ItemType.Type, itemConfig: @escaping CollectionItemConfig<E, ItemType>) where ItemType: NSCollectionViewItem {
             self.itemIdentifier = itemIdentifier
             self.itemFactory = {ds, cv, ip, model in
-                let item = cv.makeItem(withIdentifier: itemIdentifier, for: ip) as! ItemType
+                let item = cv.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: itemIdentifier), for: ip) as! ItemType
                 itemConfig(item, ip, model)
                 return item
             }
