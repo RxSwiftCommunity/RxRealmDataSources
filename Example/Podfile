@@ -1,10 +1,10 @@
 use_frameworks!
 
 abstract_target 'Demo' do
-  pod 'RealmSwift', '~> 2.10'
-  pod 'RxSwift', '~> 4.0.0-alpha.0'
-  pod 'RxCocoa', '~> 4.0.0-alpha.0'
-  pod 'RxRealm', :git => 'git://github.com/RxSwiftCommunity/RxRealm.git', :branch => 'mt/swift4.0' #'0.7.0-alpha.1'
+  pod 'RealmSwift', '3.0.0-beta.4'
+  pod 'RxSwift', '4.0.0-beta.0'
+  pod 'RxCocoa', '4.0.0-beta.0'
+  pod 'RxRealm', '0.7.1'
   pod 'RxRealmDataSources', :path => '../'
 
   target 'RxRealmDataSources_Example' do

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name             = 'RxRealmDataSources'
-  s.version          = '0.2.5-beta.0'
+  s.version          = '0.2.6'
   s.summary          = 'Rx data sources for RxRealm`s observable types'
 
   s.description      = <<-DESC
@@ -23,8 +23,8 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'Foundation'
 
-  s.dependency 'RealmSwift', '~> 2.10'
-  s.dependency 'RxSwift',    '~> 4.0.0-alpha.0'
-  s.dependency 'RxCocoa',    '~> 4.0.0-alpha.0'
-  s.dependency 'RxRealm',    '~> 0.7.0-alpha.1'
+  s.dependency 'RealmSwift', '3.0.0-beta.4'
+  s.dependency 'RxSwift',    '4.0.0-beta.0'
+  s.dependency 'RxCocoa',    '4.0.0-beta.0'
+  s.dependency 'RxRealm',    '0.7.1'
 end
