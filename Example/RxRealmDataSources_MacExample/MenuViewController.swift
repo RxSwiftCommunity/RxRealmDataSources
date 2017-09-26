@@ -32,7 +32,7 @@ extension MenuViewController: NSTableViewDataSource {
 
 extension MenuViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let cell = tableView.make(withIdentifier: "MenuCell", owner: self) as! NSTableCellView
+      let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MenuCell"), owner: self) as! NSTableCellView
         cell.textField?.stringValue = menuItems[row]
         return cell
     }
@@ -40,7 +40,7 @@ extension MenuViewController: NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
         if tableView.selectedRow > -1 {
             if let split = parent as? NSSplitViewController, split.childViewControllers.count > 1,
-                let targetVC = storyboard?.instantiateController(withIdentifier: targetNames[tableView.selectedRow]) as? NSViewController {
+              let targetVC = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: targetNames[tableView.selectedRow])) as? NSViewController {
 
                 split.childViewControllers.replaceSubrange(1...1, with: [targetVC])
             }
