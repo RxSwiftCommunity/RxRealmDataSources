@@ -15,3 +15,14 @@ abstract_target 'Demo' do
     platform :osx, '10.12'
   end
 end
+
+# for the transitional period to swift4
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      next unless target.name.include?("RxRealmData")
+
+      config.build_settings['SWIFT_VERSION'] = '4.0'
+    end
+  end
+end

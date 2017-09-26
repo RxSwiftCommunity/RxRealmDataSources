@@ -152,7 +152,7 @@ import RxRealm
         public init<CellType>(cellIdentifier: String, cellType: CellType.Type, cellConfig: @escaping TableCellConfig<E, CellType>) where CellType: NSTableCellView {
             self.cellIdentifier = cellIdentifier
             self.cellFactory = { ds, tv, row, model in
-              let cell = tv.make(withIdentifier: cellIdentifier, owner: tv) as! CellType
+              let cell = tv.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: tv) as! CellType
                 cellConfig(cell, row, model)
                 return cell
             }
