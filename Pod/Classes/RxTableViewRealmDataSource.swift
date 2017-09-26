@@ -133,9 +133,9 @@ import RxRealm
         public var tableView: NSTableView?
         public var animated = true
         public var rowAnimations = (
-            insert: NSTableViewAnimationOptions.effectFade,
-            update: NSTableViewAnimationOptions.effectFade,
-            delete: NSTableViewAnimationOptions.effectFade)
+            insert: NSTableView.AnimationOptions.effectFade,
+            update: NSTableView.AnimationOptions.effectFade,
+            delete: NSTableView.AnimationOptions.effectFade)
 
         public weak var delegate: NSTableViewDelegate?
         public weak var dataSource: NSTableViewDataSource?
@@ -151,8 +151,8 @@ import RxRealm
 
         public init<CellType>(cellIdentifier: String, cellType: CellType.Type, cellConfig: @escaping TableCellConfig<E, CellType>) where CellType: NSTableCellView {
             self.cellIdentifier = cellIdentifier
-            self.cellFactory = {ds, tv, row, model in
-                let cell = tv.make(withIdentifier: cellIdentifier, owner: tv) as! CellType
+            self.cellFactory = { ds, tv, row, model in
+              let cell = tv.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: tv) as! CellType
                 cellConfig(cell, row, model)
                 return cell
             }

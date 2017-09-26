@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Dispatch
 import RealmSwift
 import RxSwift
 
@@ -72,7 +71,7 @@ class DataRandomizer {
         try! realm.write {
             let timerLaps = realm.objects(Timer.self).first!.laps
             let index = timerLaps.count.random()
-            timerLaps.remove(objectAtIndex: index)
+          timerLaps.remove(at: index)
             print("delete from [\(index)]")
         }
     }

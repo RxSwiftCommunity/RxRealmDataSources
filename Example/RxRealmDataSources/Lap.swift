@@ -10,5 +10,5 @@ import Foundation
 import RealmSwift
 
 class Lap: Object {
-    dynamic var text = Date().description
+    @objc dynamic var text = Date().description
 }

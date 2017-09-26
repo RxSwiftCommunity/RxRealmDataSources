@@ -19,7 +19,7 @@ import UIKit
 extension Reactive where Base: UITableView {
 
     public func realmChanges<E>(_ dataSource: RxTableViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxTableViewRealmDataSource<E>> where E: Object {
+        -> RealmBindObserver<E, AnyRealmCollection<E>, RxTableViewRealmDataSource<E>> {
 
             return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
                 if ds.tableView == nil {
@@ -48,7 +48,7 @@ extension Reactive where Base: UITableView {
 extension Reactive where Base: UICollectionView {
 
     public func realmChanges<E>(_ dataSource: RxCollectionViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxCollectionViewRealmDataSource<E>> where E: Object {
+        -> RealmBindObserver<E, AnyRealmCollection<E>, RxCollectionViewRealmDataSource<E>> {
 
             return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
                 if ds.collectionView == nil {
@@ -81,7 +81,7 @@ import Cocoa
 extension Reactive where Base: NSTableView {
 
     public func realmChanges<E>(_ dataSource: RxTableViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxTableViewRealmDataSource<E>> where E: Object {
+        -> RealmBindObserver<E, AnyRealmCollection<E>, RxTableViewRealmDataSource<E>> {
 
             base.delegate = dataSource
             base.dataSource = dataSource
@@ -98,7 +98,7 @@ extension Reactive where Base: NSTableView {
 extension Reactive where Base: NSCollectionView {
 
     public func realmChanges<E>(_ dataSource: RxCollectionViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxCollectionViewRealmDataSource<E>> where E: Object {
+        -> RealmBindObserver<E, AnyRealmCollection<E>, RxCollectionViewRealmDataSource<E>> {
 
             return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
                 if ds.collectionView == nil {
