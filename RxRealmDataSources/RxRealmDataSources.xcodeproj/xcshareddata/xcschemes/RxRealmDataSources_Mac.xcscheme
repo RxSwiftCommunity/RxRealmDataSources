@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2E22AA901F8C6085007DD632"
-               BuildableName = "RxRealmDataSources_iOS_Mac.framework"
+               BuildableName = "RxRealmDataSources.framework"
                BlueprintName = "RxRealmDataSources_iOS_Mac"
                ReferencedContainer = "container:RxRealmDataSources.xcodeproj">
             </BuildableReference>
