@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		2E22AA9C1F8C6258007DD632 /* RxRealmDataSources.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E22AA9B1F8C618D007DD632 /* RxRealmDataSources.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E22AA9D1F8C6259007DD632 /* RxRealmDataSources.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E22AA9B1F8C618D007DD632 /* RxRealmDataSources.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E22AAA21F8C63AD007DD632 /* RxCollectionViewRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E22AA9E1F8C63AD007DD632 /* RxCollectionViewRealmDataSource.swift */; };
+		2E22AAA31F8C63AD007DD632 /* RxCollectionViewRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E22AA9E1F8C63AD007DD632 /* RxCollectionViewRealmDataSource.swift */; };
+		2E22AAA41F8C63AD007DD632 /* Reactive+RxRealmDataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E22AA9F1F8C63AD007DD632 /* Reactive+RxRealmDataSources.swift */; };
+		2E22AAA51F8C63AD007DD632 /* Reactive+RxRealmDataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E22AA9F1F8C63AD007DD632 /* Reactive+RxRealmDataSources.swift */; };
+		2E22AAA61F8C63AD007DD632 /* RxTableViewRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E22AAA01F8C63AD007DD632 /* RxTableViewRealmDataSource.swift */; };
+		2E22AAA71F8C63AD007DD632 /* RxTableViewRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E22AAA01F8C63AD007DD632 /* RxTableViewRealmDataSource.swift */; };
+		2E22AAA81F8C63AD007DD632 /* RealmBindObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E22AAA11F8C63AD007DD632 /* RealmBindObserver.swift */; };
+		2E22AAA91F8C63AD007DD632 /* RealmBindObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E22AAA11F8C63AD007DD632 /* RealmBindObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +24,10 @@
 		2E22AA911F8C6085007DD632 /* RxRealmDataSources.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxRealmDataSources.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E22AA9A1F8C618D007DD632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E22AA9B1F8C618D007DD632 /* RxRealmDataSources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxRealmDataSources.h; sourceTree = "<group>"; };
+		2E22AA9E1F8C63AD007DD632 /* RxCollectionViewRealmDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RxCollectionViewRealmDataSource.swift; path = ../../Pod/Classes/RxCollectionViewRealmDataSource.swift; sourceTree = "<group>"; };
+		2E22AA9F1F8C63AD007DD632 /* Reactive+RxRealmDataSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reactive+RxRealmDataSources.swift"; path = "../../Pod/Classes/Reactive+RxRealmDataSources.swift"; sourceTree = "<group>"; };
+		2E22AAA01F8C63AD007DD632 /* RxTableViewRealmDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RxTableViewRealmDataSource.swift; path = ../../Pod/Classes/RxTableViewRealmDataSource.swift; sourceTree = "<group>"; };
+		2E22AAA11F8C63AD007DD632 /* RealmBindObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealmBindObserver.swift; path = ../../Pod/Classes/RealmBindObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,10 @@
 		2E22AA991F8C618D007DD632 /* RxRealmDataSources */ = {
 			isa = PBXGroup;
 			children = (
+				2E22AA9F1F8C63AD007DD632 /* Reactive+RxRealmDataSources.swift */,
+				2E22AAA11F8C63AD007DD632 /* RealmBindObserver.swift */,
+				2E22AA9E1F8C63AD007DD632 /* RxCollectionViewRealmDataSource.swift */,
+				2E22AAA01F8C63AD007DD632 /* RxTableViewRealmDataSource.swift */,
 				2E22AA9A1F8C618D007DD632 /* Info.plist */,
 				2E22AA9B1F8C618D007DD632 /* RxRealmDataSources.h */,
 			);
@@ -131,10 +147,12 @@
 				TargetAttributes = {
 					2E22AA801F8C6046007DD632 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					2E22AA901F8C6085007DD632 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -179,6 +197,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E22AAA81F8C63AD007DD632 /* RealmBindObserver.swift in Sources */,
+				2E22AAA21F8C63AD007DD632 /* RxCollectionViewRealmDataSource.swift in Sources */,
+				2E22AAA61F8C63AD007DD632 /* RxTableViewRealmDataSource.swift in Sources */,
+				2E22AAA41F8C63AD007DD632 /* Reactive+RxRealmDataSources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +208,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E22AAA91F8C63AD007DD632 /* RealmBindObserver.swift in Sources */,
+				2E22AAA31F8C63AD007DD632 /* RxCollectionViewRealmDataSource.swift in Sources */,
+				2E22AAA71F8C63AD007DD632 /* RxTableViewRealmDataSource.swift in Sources */,
+				2E22AAA51F8C63AD007DD632 /* Reactive+RxRealmDataSources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +334,7 @@
 		2E22AA8A1F8C6046007DD632 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -320,6 +347,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.RxSwiftCommunity.RxRealmDataSources-iOS";
 				PRODUCT_NAME = RxRealmDataSources;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -328,6 +356,7 @@
 		2E22AA8B1F8C6046007DD632 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -348,6 +377,7 @@
 		2E22AA971F8C6086007DD632 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -364,6 +394,7 @@
 				PRODUCT_NAME = RxRealmDataSources;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -371,6 +402,7 @@
 		2E22AA981F8C6086007DD632 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
