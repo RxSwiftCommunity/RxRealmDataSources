@@ -1,6 +1,6 @@
 //
-//  RxRealmDataSources_iOS.h
-//  RxRealmDataSources_iOS
+//  RxRealmDataSources.h
+//  RxRealmDataSources
 //
 //  Created by Rob Cheung on 10/9/17.
 //  Copyright © 2017 RxSwiftCommunity. All rights reserved.
