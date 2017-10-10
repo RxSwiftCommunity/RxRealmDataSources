@@ -1,0 +1,20 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+
+target 'RxRealm_Example' do
+  platform :ios, '8.0'
+  pod 'RxRealm', :path => '../'
+  pod 'RxSwift',    '~> 3'
+  pod 'RxCocoa',    '~> 3'
+  pod 'RealmSwift', '~> 2'
+end
+
+target 'RxRealm_Tests' do
+  platform :ios, '8.0'
+  pod 'RxSwift',    '~> 3'
+  pod 'RxCocoa',    '~> 3'
+  pod 'RxTest',    '~> 3'
+  pod 'RealmSwift', '~> 2'
+  pod 'RxRealm', :path => '../'
+end
