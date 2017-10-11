@@ -26,7 +26,6 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
-*.idea/
 
 ## Playgrounds
 timeline.xctimeline
@@ -46,7 +45,7 @@ playground.xcworkspace
 #
 # Pods/
 
-# Carthage
+Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
@@ -68,3 +67,4 @@ Example/Pods
 
 # mac OS
 .DS_Store
+*.idea/
