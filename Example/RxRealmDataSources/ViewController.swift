@@ -48,7 +48,7 @@ class ViewController: UIViewController {
             .disposed(by: bag)
 
         // react on cell taps
-        tableView.rx.realmModelSelected(Lap.self)
+        tableView.rx.modelSelected(Lap.self)
             .map({ $0.text })
             .bind(to: rx.title)
             .disposed(by: bag)

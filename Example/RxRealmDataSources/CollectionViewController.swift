@@ -48,7 +48,7 @@ class CollectionViewController: UIViewController {
             .disposed(by: bag)
 
         // react on cell taps
-        collectionView.rx.realmModelSelected(Lap.self)
+        collectionView.rx.modelSelected(Lap.self)
             .map({ $0.text })
             .bind(to: rx.title)
             .disposed(by: bag)

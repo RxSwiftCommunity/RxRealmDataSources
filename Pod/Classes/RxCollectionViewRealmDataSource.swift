@@ -20,7 +20,7 @@ import RxRealm
     public typealias CollectionCellFactory<E: Object> = (RxCollectionViewRealmDataSource<E>, UICollectionView, IndexPath, E) -> UICollectionViewCell
     public typealias CollectionCellConfig<E: Object, CellType: UICollectionViewCell> = (CellType, IndexPath, E) -> Void
 
-    open class RxCollectionViewRealmDataSource <E: Object>: NSObject, UICollectionViewDataSource {
+    open class RxCollectionViewRealmDataSource <E: Object>: NSObject, UICollectionViewDataSource, SectionedViewDataSourceType {
         private var items: AnyRealmCollection<E>?
 
         // MARK: - Configuration
@@ -47,7 +47,7 @@ import RxRealm
         }
 
         // MARK: - Data access
-        public func model(at indexPath: IndexPath) -> E {
+        public func model(at indexPath: IndexPath) throws -> Any {
             return items![indexPath.row]
         }
 

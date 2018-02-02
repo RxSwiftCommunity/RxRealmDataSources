@@ -20,7 +20,7 @@ import RxRealm
     public typealias TableCellFactory<E: Object> = (RxTableViewRealmDataSource<E>, UITableView, IndexPath, E) -> UITableViewCell
     public typealias TableCellConfig<E: Object, CellType: UITableViewCell> = (CellType, IndexPath, E) -> Void
 
-    open class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSource {
+    open class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSource, SectionedViewDataSourceType {
 
         private var items: AnyRealmCollection<E>?
 
@@ -55,7 +55,7 @@ import RxRealm
         }
 
         // MARK: - Data access
-        public func model(at indexPath: IndexPath) -> E {
+        public func model(at indexPath: IndexPath) throws -> Any {
             return items![indexPath.row]
         }
 
