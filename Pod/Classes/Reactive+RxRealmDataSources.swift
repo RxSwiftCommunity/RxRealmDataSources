@@ -29,6 +29,11 @@ extension Reactive where Base: UITableView {
                 ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
             }
     }
+
+    @available(*, deprecated, renamed: "modelSelected")
+    public func realmModelSelected<E>(_ modelType: E.Type) -> ControlEvent<E> where E: RealmSwift.Object {
+        return modelSelected(modelType)
+    }
 }
 
 extension Reactive where Base: UICollectionView {
@@ -43,6 +48,11 @@ extension Reactive where Base: UICollectionView {
                 ds.collectionView?.dataSource = ds
                 ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
             }
+    }
+
+    @available(*, deprecated, renamed: "modelSelected")
+    public func realmModelSelected<E>(_ modelType: E.Type) -> ControlEvent<E> where E: RealmSwift.Object {
+        return modelSelected(modelType)
     }
 }
 

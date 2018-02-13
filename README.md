@@ -61,7 +61,7 @@ laps
 The library adds an extension to table views and collection views, allowing you to easily subscribe to the cell selected delegate event. Here's a snippet from the example demo app:
 
 ```swift
-tableView.rx.realmModelSelected(Lap.self)
+tableView.rx.modelSelected(Lap.self)
   .map({ $0.text })
   .bind(to: rx.title)
   .disposed(by: bag)
