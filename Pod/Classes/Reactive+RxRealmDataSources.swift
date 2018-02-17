@@ -12,22 +12,23 @@ import RxSwift
 import RxCocoa
 import RxRealm
 
+public typealias RealmChange<E: RealmCollectionValue> = (AnyRealmCollection<E>, RealmChangeset?)
+
 #if os(iOS)
 // MARK: - iOS / UIKit
 
 import UIKit
 extension Reactive where Base: UITableView {
 
-    public func realmChanges<E>(_ dataSource: RxTableViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxTableViewRealmDataSource<E>> {
-
-            return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
-                if ds.tableView == nil {
-                    ds.tableView = self.base
-                }
-                ds.tableView?.dataSource = ds
-                ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
-            }
+    @available(*, deprecated, message: "use items(dataSource:) instead")
+    public func realmChanges<
+            DataSource: RxTableViewDataSourceType & UITableViewDataSource,
+            O: ObservableType>
+        (_ dataSource: DataSource)
+        -> (_ source: O)
+        -> Disposable
+        where DataSource.Element == O.E {
+        return items(dataSource: dataSource)
     }
 
     @available(*, deprecated, renamed: "modelSelected")
@@ -38,16 +39,14 @@ extension Reactive where Base: UITableView {
 
 extension Reactive where Base: UICollectionView {
 
-    public func realmChanges<E>(_ dataSource: RxCollectionViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxCollectionViewRealmDataSource<E>> {
-
-            return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
-                if ds.collectionView == nil {
-                    ds.collectionView = self.base
-                }
-                ds.collectionView?.dataSource = ds
-                ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
-            }
+    @available(*, deprecated, message: "use items(dataSource:) instead")
+    public func realmChanges<
+            DataSource: RxCollectionViewDataSourceType & UICollectionViewDataSource,
+            O: ObservableType>
+        (_ dataSource: DataSource)
+        -> (_ source: O)
+        -> Disposable where DataSource.Element == O.E {
+        return items(dataSource: dataSource)
     }
 
     @available(*, deprecated, renamed: "modelSelected")

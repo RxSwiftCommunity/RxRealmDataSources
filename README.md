@@ -31,7 +31,7 @@ let laps = Observable.changeset(from: realm.objects(Timer.self).first!.laps)
 
 // bind to table view
 laps
-    .bindTo(tableView.rx.realmChanges(dataSource))
+    .bindTo(tableView.rx.items(dataSource: dataSource))
     .disposed(by: bag)
 ```
 
@@ -52,7 +52,7 @@ let laps = Observable.changeset(from: realm.objects(Timer.self).first!.laps)
 
 // bind to collection view
 laps
-    .bindTo(collectionView.rx.realmChanges(dataSource))
+    .bindTo(collectionView.rx.items(dataSource: dataSource))
     .disposed(by: bag)
 ```
 

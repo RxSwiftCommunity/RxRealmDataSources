@@ -20,12 +20,11 @@ import RxRealm
     public typealias CollectionCellFactory<E: Object> = (RxCollectionViewRealmDataSource<E>, UICollectionView, IndexPath, E) -> UICollectionViewCell
     public typealias CollectionCellConfig<E: Object, CellType: UICollectionViewCell> = (CellType, IndexPath, E) -> Void
 
-    open class RxCollectionViewRealmDataSource <E: Object>: NSObject, UICollectionViewDataSource, SectionedViewDataSourceType {
+    open class RxCollectionViewRealmDataSource <E: Object>: NSObject, UICollectionViewDataSource, SectionedViewDataSourceType, RxCollectionViewDataSourceType {
         private var items: AnyRealmCollection<E>?
 
         // MARK: - Configuration
 
-        public var collectionView: UICollectionView?
         public var animated = true
 
         // MARK: - Init
@@ -51,6 +50,13 @@ import RxRealm
             return items![indexPath.row]
         }
 
+        // MARK: - RxCollectionViewDataSourceType
+        public func collectionView(_ collectionView: UICollectionView, observedEvent: Event<RealmChange<E>>) {
+            Binder(self) { dataSource, element in
+                dataSource.applyChanges(to: collectionView, items: element.0, changes: element.1)
+            }.on(observedEvent)
+        }
+
         // MARK: - UICollectionViewDataSource protocol
         public func numberOfSections(in collectionView: UICollectionView) -> Int {
             return 1
@@ -67,38 +73,34 @@ import RxRealm
         // MARK: - Applying changeset to the collection view
         private let fromRow = {(row: Int) in return IndexPath(row: row, section: 0)}
 
-        func applyChanges(items: AnyRealmCollection<E>, changes: RealmChangeset?) {
+        func applyChanges(to collectionView: UICollectionView, items: AnyRealmCollection<E>, changes: RealmChangeset?) {
             if self.items == nil {
                 self.items = items
             }
 
-        guard let collectionView = collectionView else {
-            fatalError("You have to bind a collection view to the data source.")
-        }
+            guard animated else {
+                collectionView.reloadData()
+                return
+            }
 
-        guard animated else {
-            collectionView.reloadData()
-            return
-        }
+            guard let changes = changes else {
+                collectionView.reloadData()
+                return
+            }
 
-        guard let changes = changes else {
-            collectionView.reloadData()
-            return
-        }
+            let lastItemCount = collectionView.numberOfItems(inSection: 0)
+            guard items.count == lastItemCount + changes.inserted.count - changes.deleted.count else {
+                collectionView.reloadData()
+                return
+            }
 
-        let lastItemCount = collectionView.numberOfItems(inSection: 0)
-        guard items.count == lastItemCount + changes.inserted.count - changes.deleted.count else {
-            collectionView.reloadData()
-            return
+            collectionView.performBatchUpdates({[unowned self] in
+                collectionView.deleteItems(at: changes.deleted.map(self.fromRow))
+                collectionView.reloadItems(at: changes.updated.map(self.fromRow))
+                collectionView.insertItems(at: changes.inserted.map(self.fromRow))
+            }, completion: nil)
         }
-
-        collectionView.performBatchUpdates({[unowned self] in
-            collectionView.deleteItems(at: changes.deleted.map(self.fromRow))
-            collectionView.reloadItems(at: changes.updated.map(self.fromRow))
-            collectionView.insertItems(at: changes.inserted.map(self.fromRow))
-        }, completion: nil)
     }
-}
 
 #elseif os(OSX)
 // MARK: - macOS / Cocoa
