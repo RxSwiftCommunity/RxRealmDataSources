@@ -23,6 +23,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = editButtonItem
 
         // create data source
         let dataSource = RxTableViewRealmDataSource<Lap>(cellIdentifier: "Cell", cellType: PersonCell.self) {cell, ip, lap in
@@ -36,7 +37,7 @@ class ViewController: UIViewController {
 
         // bind to table view
         laps
-            .bind(to: tableView.rx.realmChanges(dataSource))
+            .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: bag)
 
         // bind to vc title
@@ -53,7 +54,27 @@ class ViewController: UIViewController {
             .bind(to: rx.title)
             .disposed(by: bag)
 
+        tableView.rx.itemDeleted.asObservable()
+            .subscribe(onNext: { indexPath in
+                try! realm.write {
+                    let laps = realm.objects(Timer.self).first!.laps
+                    realm.delete(laps[indexPath.row])
+                }
+            })
+            .disposed(by: bag)
+
         // demo inserting and deleting data
         data.start()
+    }
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
+        
+        if editing {
+            data.stop()
+        } else {
+            data.start()
+        }
     }
 }
