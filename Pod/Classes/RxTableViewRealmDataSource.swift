@@ -12,8 +12,8 @@ import RxSwift
 import RxCocoa
 import RxRealm
 
-#if os(iOS)
-    // MARK: - iOS / UIKit
+#if os(iOS) || os(tvOS)
+    // MARK: - iOS || tvOS / UIKit
 
     import UIKit
 
