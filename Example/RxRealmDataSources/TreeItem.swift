@@ -11,20 +11,20 @@ import RealmSwift
 import RxRealmDataSources
 
 @objcMembers class TreeItem: Object, RxOutlineViewRealmDataItem {
-    
-    
-    
+
     override static func primaryKey() -> String? { return "key" }
     
     dynamic var key         : String            = UUID().uuidString
     dynamic var title       : String            = ""
     dynamic var time        : Double            = 0
-    dynamic var children    = List<TreeItem>()
-    dynamic var _parents    = LinkingObjects(fromType: TreeItem.self, property: "children")
+    dynamic var children    = LinkingObjects(fromType: TreeItem.self, property: "parent")
+    dynamic var parent      : TreeItem? //
 
     
     // RxOutlineViewRealmDataItem implementation
-    var isExpandable: Bool  { return childrenCount > 0 }
+    var isExpandable: Bool  {
+        return childrenCount > 0
+    }
     var childrenCount : Int  { get { return children.count } }
     
     func childAt(idx: Int) -> RxOutlineViewRealmDataItem? {
@@ -35,9 +35,7 @@ import RxRealmDataSources
     }
     
     func getParent() -> RxOutlineViewRealmDataItem? {
-        guard _parents.count > 0 else { return nil }
-        
-        return _parents[0]
+        return parent
     }
 }
 

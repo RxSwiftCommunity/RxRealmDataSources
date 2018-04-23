@@ -47,26 +47,26 @@ class OutlineViewController: NSViewController {
         items
             .bind(to: outlineView.rx.realmChanges(dataSource))
             .disposed(by: bag)
-        
-        //items.subscribe(onNext: { collection, changeset in
-        //    print("items added : \(collection)")
-        //    }).disposed(by: bag)
     }
     
     override func viewDidAppear() {
         let realm = try! Realm(configuration: data.config)
         
-        let items = realm.objects(TreeItem.self)
+        let rootItem = TreeItem()
+        rootItem.title = "Root Item"
+        rootItem.time = Double(60)
+        try! realm.write {
+            realm.add(rootItem)
+        }
         
-        if items.count == 0 {
-            for i in 0...20 {
-                let newItem = TreeItem()
-                newItem.title = "Item \(i)"
-                newItem.time = Double(i * 60)
-
-                try! realm.write {
-                    realm.add(newItem)
-                }
+        for i in 0...5 {
+            let newItem = TreeItem()
+            newItem.title = "Item \(i)"
+            newItem.time = Double(i * 60)
+            newItem.parent = rootItem
+            
+            try! realm.write {
+                realm.add(newItem)
             }
         }
     }

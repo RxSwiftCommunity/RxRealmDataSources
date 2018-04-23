@@ -60,7 +60,7 @@ open class RxOutlineViewRealmDataSource<E: Object>: NSObject, NSOutlineViewDataS
     
     public func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if item == nil {
-            if let rootItems = items?.filter("_parents.@count = %d", 0) {
+            if let rootItems = items?.filter("parent = null", 0) {
                 return rootItems.count
             }
             return 0
@@ -74,7 +74,7 @@ open class RxOutlineViewRealmDataSource<E: Object>: NSObject, NSOutlineViewDataS
     
     public func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if item == nil {
-            if let rootItems = items?.filter("_parents.@count = %d", 0) {
+            if let rootItems = items?.filter("parent = null", 0) {
                 return rootItems[index]
             }
             return 0
