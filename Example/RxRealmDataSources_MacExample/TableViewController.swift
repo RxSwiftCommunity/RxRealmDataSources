@@ -25,7 +25,7 @@ class TableViewController: NSViewController {
         super.viewDidLoad()
 
         // create data source
-        let dataSource = RxTableViewRealmDataSource<Lap>(cellIdentifier: "Cell", cellType: NSTableCellView.self) {cell, row, lap in
+        let dataSource = RxTableViewRealmDataSource<Lap>(cellIdentifier: "Cell", cellType: NSTableCellView.self) {cell, row, columnId, lap  in
             cell.textField!.stringValue = "\(lap.text)"
         }
         dataSource.delegate = self

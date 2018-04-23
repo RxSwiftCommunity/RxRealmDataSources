@@ -31,6 +31,8 @@
 		9CB0B5751DF9E9E800F947D0 /* Lap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0B5741DF9E9E800F947D0 /* Lap.swift */; };
 		9CB0B5771DF9EA0F00F947D0 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0B5761DF9EA0F00F947D0 /* Timer.swift */; };
 		A0F623D0059D4D5BF38B60D9 /* Pods_Demo_RxRealmDataSources_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CAA1529C0E19B1E708B0776 /* Pods_Demo_RxRealmDataSources_Example.framework */; };
+		E6063F6F208E2094004423D7 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6063F6E208E2094004423D7 /* OutlineViewController.swift */; };
+		E6063F72208E256F004423D7 /* TreeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6063F70208E256F004423D7 /* TreeItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		9CB0B5741DF9E9E800F947D0 /* Lap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lap.swift; sourceTree = "<group>"; };
 		9CB0B5761DF9EA0F00F947D0 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		BC02907133053010FAE53FD9 /* Pods-RxRealmDataSources_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxRealmDataSources_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxRealmDataSources_Example/Pods-RxRealmDataSources_Example.release.xcconfig"; sourceTree = "<group>"; };
+		E6063F6E208E2094004423D7 /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
+		E6063F70208E256F004423D7 /* TreeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeItem.swift; sourceTree = "<group>"; };
 		E709FF280BD1C0E98E09724E /* Pods-Demo-RxRealmDataSources_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-RxRealmDataSources_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-RxRealmDataSources_Example/Pods-Demo-RxRealmDataSources_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F047F94251BA9258A7A94AEE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +214,7 @@
 				9C5B02E11E167A3D0009FBDE /* MenuViewController.swift */,
 				9C5B02E01E16791C0009FBDE /* 1. Table View Data Source */,
 				9C5B02EB1E16C4D40009FBDE /* 2. Collection View Data Source */,
+				E6063F6D208E2060004423D7 /* 3. Outline view Data Source */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 			children = (
 				9CB0B5741DF9E9E800F947D0 /* Lap.swift */,
 				9CB0B5761DF9EA0F00F947D0 /* Timer.swift */,
+				E6063F70208E256F004423D7 /* TreeItem.swift */,
 			);
 			name = "Data Entities";
 			path = RxRealmDataSources;
@@ -258,6 +264,14 @@
 				9CA89C641DFDF1A4008ADCD2 /* CollectionViewController.swift */,
 			);
 			name = "2. Collection View Data Source";
+			sourceTree = "<group>";
+		};
+		E6063F6D208E2060004423D7 /* 3. Outline view Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				E6063F6E208E2094004423D7 /* OutlineViewController.swift */,
+			);
+			name = "3. Outline view Data Source";
 			sourceTree = "<group>";
 		};
 		F29E453A66420BEFA081E479 /* Pods */ = {
@@ -528,12 +542,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C5B02E81E16AB080009FBDE /* DataRandomizer.swift in Sources */,
+				E6063F6F208E2094004423D7 /* OutlineViewController.swift in Sources */,
 				9C5B02EA1E16AB0C0009FBDE /* Timer.swift in Sources */,
 				9C5B02F21E16C8270009FBDE /* CollectionItem.swift in Sources */,
 				9C5B02ED1E16C50F0009FBDE /* CollectionViewController.swift in Sources */,
 				9C5B02E21E167A3D0009FBDE /* MenuViewController.swift in Sources */,
 				9C5B02E91E16AB0C0009FBDE /* Lap.swift in Sources */,
 				9C5B02D21E1678C80009FBDE /* AppDelegate.swift in Sources */,
+				E6063F72208E256F004423D7 /* TreeItem.swift in Sources */,
 				9C5B02E61E16AABA0009FBDE /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
