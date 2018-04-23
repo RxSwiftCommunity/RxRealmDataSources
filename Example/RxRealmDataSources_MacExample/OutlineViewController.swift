@@ -16,18 +16,65 @@ import RxRealmDataSources
 
 class OutlineViewController: NSViewController {
     
+    @IBOutlet weak var outlineView: NSOutlineView!
+    
     private let bag = DisposeBag()
     private let data = DataRandomizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let dataSource = RxOutlineViewRealmDataSource<TreeItem>(cellIdentifier: "Title", cellType: NSTableCellView.self) {
+            cell, columnId, treeItem  in
+            
+            guard let columnId = columnId else { return }
+            
+            switch columnId {
+            case "Title":
+                cell.textField!.stringValue = treeItem.title
+            case "Time":
+                cell.textField!.stringValue = "\(treeItem.time)"
+            default:
+                break
+            }
+        }
+        dataSource.delegate = self
         
+        let realm = try! Realm(configuration: data.config)
+        let items = Observable.changeset(from: realm.objects(TreeItem.self))
+            .share()
+        
+        items
+            .bind(to: outlineView.rx.realmChanges(dataSource))
+            .disposed(by: bag)
+        
+        //items.subscribe(onNext: { collection, changeset in
+        //    print("items added : \(collection)")
+        //    }).disposed(by: bag)
+    }
+    
+    override func viewDidAppear() {
+        let realm = try! Realm(configuration: data.config)
+        
+        let items = realm.objects(TreeItem.self)
+        
+        if items.count == 0 {
+            for i in 0...20 {
+                let newItem = TreeItem()
+                newItem.title = "Item \(i)"
+                newItem.time = Double(i * 60)
+
+                try! realm.write {
+                    realm.add(newItem)
+                }
+            }
+        }
+    }
+
+}
+
+extension OutlineViewController: NSOutlineViewDelegate {
+    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+        return 20.0
     }
 }
-/*
-extension TableViewController: NSTableViewDelegate {
-    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 40.0
-    }
-}*/

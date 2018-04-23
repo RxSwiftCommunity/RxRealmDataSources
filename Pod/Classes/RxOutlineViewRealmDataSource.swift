@@ -11,21 +11,13 @@ import RxSwift
 import RxCocoa
 import RxRealm
 
-open class RxOutlineViewRealmDataItem : Object {
-    var  childrenCount : Int  { get { fatalError("implement me") } }
-    var  isExpandable  : Bool { return childrenCount > 0}
-
-    func childAt(idx: Int) -> RxOutlineViewRealmDataItem? { fatalError("implement me") }
-    func getParent()       -> RxOutlineViewRealmDataItem? { fatalError("implement me") }
-}
-
 #if os(OSX)
 import Cocoa
 
-public typealias OutlineCellFactory<E: RxOutlineViewRealmDataItem> = (RxOutlineViewRealmDataSource<E>, NSOutlineView, Int, String?, E) -> NSTableCellView
-public typealias OutlineCellConfig<E: RxOutlineViewRealmDataItem, CellType: NSTableCellView> = (CellType, Int, String?, E) -> Void
+public typealias OutlineCellFactory<E: Object> = (NSOutlineView, String?, E) -> NSTableCellView
+public typealias OutlineCellConfig<E: Object, CellType: NSTableCellView> = (CellType, String?, E) -> Void
 
-open class RxOutlineViewRealmDataSource<E: RxOutlineViewRealmDataItem>: NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
+open class RxOutlineViewRealmDataSource<E: Object>: NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
     
     private var items: AnyRealmCollection<E>?
     
@@ -38,8 +30,8 @@ open class RxOutlineViewRealmDataSource<E: RxOutlineViewRealmDataItem>: NSObject
         update: NSTableView.AnimationOptions.effectFade,
         delete: NSTableView.AnimationOptions.effectFade)
     
-    public weak var delegate: NSTableViewDelegate?
-    public weak var dataSource: NSTableViewDataSource?
+    public weak var delegate: NSOutlineViewDelegate?
+    public weak var dataSource: NSOutlineViewDataSource?
     
     // MARK: - Init
     public let cellIdentifier: String
@@ -52,15 +44,27 @@ open class RxOutlineViewRealmDataSource<E: RxOutlineViewRealmDataItem>: NSObject
     
     public init<CellType>(cellIdentifier: String, cellType: CellType.Type, cellConfig: @escaping OutlineCellConfig<E, CellType>) where CellType: NSTableCellView {
         self.cellIdentifier = cellIdentifier
-        self.cellFactory = { ds, tv, row, columnId, model in
-            let cell = tv.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: tv) as! CellType
-            cellConfig(cell, row, columnId, model)
+        self.cellFactory = { ov, columnId, model in
+            let cell = ov.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: ov) as! CellType
+            cellConfig(cell, columnId, model)
             return cell
         }
     }
     
     // MARK: - NSOutlineViewDataSource protocol
+    public func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        guard let item = item as? E else { return nil }
+        let columnId = tableColumn?.identifier.rawValue
+        return cellFactory(outlineView, columnId, item)
+    }
+    
     public func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
+        if item == nil {
+            if let rootItems = items?.filter("_parents.@count = %d", 0) {
+                return rootItems.count
+            }
+            return 0
+        }
         if let item = item as? RxOutlineViewRealmDataItem {
             return item.childrenCount
         }
@@ -69,6 +73,12 @@ open class RxOutlineViewRealmDataSource<E: RxOutlineViewRealmDataItem>: NSObject
     }
     
     public func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+        if item == nil {
+            if let rootItems = items?.filter("_parents.@count = %d", 0) {
+                return rootItems[index]
+            }
+            return 0
+        }
         guard let item = item as? RxOutlineViewRealmDataItem else { return false }
         guard let child = item.childAt(idx: index) else { return false }
         
