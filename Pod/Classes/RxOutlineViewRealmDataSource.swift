@@ -12,16 +12,18 @@ import RxCocoa
 import RxRealm
 
 open class RxOutlineViewRealmDataItem : Object {
-    var  childrenCount : Int  { assert(false, "implement me"); return 0 }
+    var  childrenCount : Int  { get { fatalError("implement me") } }
     var  isExpandable  : Bool { return childrenCount > 0}
-    func childAt(idx: Int) -> RxOutlineViewRealmDataItem? { assert(false, "implement me"); return nil }
+
+    func childAt(idx: Int) -> RxOutlineViewRealmDataItem? { fatalError("implement me") }
+    func getParent()       -> RxOutlineViewRealmDataItem? { fatalError("implement me") }
 }
 
 #if os(OSX)
 import Cocoa
 
-public typealias TableCellFactory<E: RxOutlineViewRealmDataItem> = (RxOutlineViewRealmDataSource<E>, NSOutlineView, Int, String?, E) -> NSTableCellView
-public typealias TableCellConfig<E: RxOutlineViewRealmDataItem, CellType: NSTableCellView> = (CellType, Int, String?, E) -> Void
+public typealias OutlineCellFactory<E: RxOutlineViewRealmDataItem> = (RxOutlineViewRealmDataSource<E>, NSOutlineView, Int, String?, E) -> NSTableCellView
+public typealias OutlineCellConfig<E: RxOutlineViewRealmDataItem, CellType: NSTableCellView> = (CellType, Int, String?, E) -> Void
 
 open class RxOutlineViewRealmDataSource<E: RxOutlineViewRealmDataItem>: NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
     
@@ -29,7 +31,7 @@ open class RxOutlineViewRealmDataSource<E: RxOutlineViewRealmDataItem>: NSObject
     
     // MARK: - Configuration
     
-    public var tableView: NSTableView?
+    public var outlineView: NSOutlineView?
     public var animated = true
     public var rowAnimations = (
         insert: NSTableView.AnimationOptions.effectFade,
@@ -41,14 +43,14 @@ open class RxOutlineViewRealmDataSource<E: RxOutlineViewRealmDataItem>: NSObject
     
     // MARK: - Init
     public let cellIdentifier: String
-    public let cellFactory: TableCellFactory<E>
+    public let cellFactory: OutlineCellFactory<E>
     
-    public init(cellIdentifier: String, cellFactory: @escaping TableCellFactory<E>) {
+    public init(cellIdentifier: String, cellFactory: @escaping OutlineCellFactory<E>) {
         self.cellIdentifier = cellIdentifier
         self.cellFactory = cellFactory
     }
     
-    public init<CellType>(cellIdentifier: String, cellType: CellType.Type, cellConfig: @escaping TableCellConfig<E, CellType>) where CellType: NSTableCellView {
+    public init<CellType>(cellIdentifier: String, cellType: CellType.Type, cellConfig: @escaping OutlineCellConfig<E, CellType>) where CellType: NSTableCellView {
         self.cellIdentifier = cellIdentifier
         self.cellFactory = { ds, tv, row, columnId, model in
             let cell = tv.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: tv) as! CellType
@@ -105,31 +107,28 @@ open class RxOutlineViewRealmDataSource<E: RxOutlineViewRealmDataItem>: NSObject
             self.items = items
         }
         
-        guard let tableView = tableView else {
+        guard let outlineView = outlineView else {
             fatalError("You have to bind a table view to the data source.")
         }
         
         guard animated else {
-            tableView.reloadData()
+            outlineView.reloadData()
             return
         }
         
-        guard let changes = changes else {
-            tableView.reloadData()
-            return
-        }
+//        guard let changes = changes else {
+//            outlineView.reloadData()
+//            return
+//        }
         
-        let lastItemCount = tableView.numberOfRows
-        guard items.count == lastItemCount + changes.inserted.count - changes.deleted.count else {
-            tableView.reloadData()
-            return
-        }
+        outlineView.reloadData()
         
-        tableView.beginUpdates()
-        tableView.removeRows(at: IndexSet(changes.deleted), withAnimation: rowAnimations.delete)
-        tableView.insertRows(at: IndexSet(changes.inserted), withAnimation: rowAnimations.insert)
-        tableView.reloadData(forRowIndexes: IndexSet(changes.updated), columnIndexes: IndexSet([0]))
-        tableView.endUpdates()
+        //outlineView.beginUpdates()
+        //outlineView.removeItems(at: IndexSet(changes.deleted), inParent: <#T##Any?#>, withAnimation: <#T##NSTableView.AnimationOptions#>)
+        //tableView.removeRows(at: IndexSet(changes.deleted), withAnimation: rowAnimations.delete)
+        //tableView.insertRows(at: IndexSet(changes.inserted), withAnimation: rowAnimations.insert)
+        //outlineView.reloadData(forRowIndexes: IndexSet(changes.updated), columnIndexes: IndexSet([0]))
+        //outlineView.endUpdates()
     }
 }
 
