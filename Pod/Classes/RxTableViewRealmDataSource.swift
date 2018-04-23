@@ -122,7 +122,7 @@ import RxRealm
     import Cocoa
 
     public typealias TableCellFactory<E: Object> = (RxTableViewRealmDataSource<E>, NSTableView, Int, String?, E) -> NSTableCellView
-    public typealias TableCellConfig<E: Object, CellType: NSTableCellView> = (CellType, Int, E) -> Void
+    public typealias TableCellConfig<E: Object, CellType: NSTableCellView> = (CellType, Int, String?, E) -> Void
 
     open class RxTableViewRealmDataSource<E: Object>: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
@@ -153,7 +153,7 @@ import RxRealm
             self.cellIdentifier = cellIdentifier
             self.cellFactory = { ds, tv, row, columnId, model in
               let cell = tv.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: tv) as! CellType
-                cellConfig(cell, row, model)
+                cellConfig(cell, row, columnId, model)
                 return cell
             }
         }
