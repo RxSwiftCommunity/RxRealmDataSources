@@ -68,3 +68,4 @@ Example/Pods
 # mac OS
 .DS_Store
 /Example/Podfile.lock
+/Example/RxRealmDataSources.xcworkspace/xcshareddata
