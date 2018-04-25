@@ -33,6 +33,8 @@
 		A0F623D0059D4D5BF38B60D9 /* Pods_Demo_RxRealmDataSources_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CAA1529C0E19B1E708B0776 /* Pods_Demo_RxRealmDataSources_Example.framework */; };
 		E6063F6F208E2094004423D7 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6063F6E208E2094004423D7 /* OutlineViewController.swift */; };
 		E6063F72208E256F004423D7 /* TreeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6063F70208E256F004423D7 /* TreeItem.swift */; };
+		E6063F7B208F31BB004423D7 /* DataRandomizerTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6063F7A208F31BB004423D7 /* DataRandomizerTree.swift */; };
+		E6063F7C208F31BB004423D7 /* DataRandomizerTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6063F7A208F31BB004423D7 /* DataRandomizerTree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,7 @@
 		BC02907133053010FAE53FD9 /* Pods-RxRealmDataSources_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxRealmDataSources_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxRealmDataSources_Example/Pods-RxRealmDataSources_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E6063F6E208E2094004423D7 /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
 		E6063F70208E256F004423D7 /* TreeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeItem.swift; sourceTree = "<group>"; };
+		E6063F7A208F31BB004423D7 /* DataRandomizerTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataRandomizerTree.swift; path = RxRealmDataSources/DataRandomizerTree.swift; sourceTree = "<group>"; };
 		E709FF280BD1C0E98E09724E /* Pods-Demo-RxRealmDataSources_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo-RxRealmDataSources_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo-RxRealmDataSources_Example/Pods-Demo-RxRealmDataSources_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F047F94251BA9258A7A94AEE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				9C530D071DFDD7340096144C /* DataRandomizer.swift */,
+				E6063F7A208F31BB004423D7 /* DataRandomizerTree.swift */,
 				9CA89C601DFDF0E4008ADCD2 /* Data Entities */,
 			);
 			name = "Cross Platform Classes";
@@ -301,7 +305,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				E14D2B725468BD930A30E223 /* [CP] Embed Pods Frameworks */,
-				0B94A67A8A2F4532561A0C17 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -321,7 +324,6 @@
 				9C5B02CC1E1678C80009FBDE /* Frameworks */,
 				9C5B02CD1E1678C80009FBDE /* Resources */,
 				3954C9255BC6A9A3899B15EF /* [CP] Embed Pods Frameworks */,
-				580B5F323BBAD77271FF4249 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -397,21 +399,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0B94A67A8A2F4532561A0C17 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo-RxRealmDataSources_Example/Pods-Demo-RxRealmDataSources_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		19F49B5A97B1CF11435191CB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -476,21 +463,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo-RxRealmDataSources_MacExample/Pods-Demo-RxRealmDataSources_MacExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		580B5F323BBAD77271FF4249 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo-RxRealmDataSources_MacExample/Pods-Demo-RxRealmDataSources_MacExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E14D2B725468BD930A30E223 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -531,6 +503,7 @@
 				9CA37C471DF853E500C1DF6C /* PersonCell.swift in Sources */,
 				9CB0B5751DF9E9E800F947D0 /* Lap.swift in Sources */,
 				9CA89C651DFDF1A4008ADCD2 /* CollectionViewController.swift in Sources */,
+				E6063F7B208F31BB004423D7 /* DataRandomizerTree.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				9CB0B5771DF9EA0F00F947D0 /* Timer.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
@@ -542,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C5B02E81E16AB080009FBDE /* DataRandomizer.swift in Sources */,
+				E6063F7C208F31BB004423D7 /* DataRandomizerTree.swift in Sources */,
 				E6063F6F208E2094004423D7 /* OutlineViewController.swift in Sources */,
 				9C5B02EA1E16AB0C0009FBDE /* Timer.swift in Sources */,
 				9C5B02F21E16C8270009FBDE /* CollectionItem.swift in Sources */,
