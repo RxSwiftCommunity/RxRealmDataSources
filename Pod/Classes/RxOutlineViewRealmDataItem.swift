@@ -12,4 +12,5 @@ public protocol RxOutlineViewRealmDataItem {
     
     func childAt(idx: Int) -> RxOutlineViewRealmDataItem?
     func getParent()       -> RxOutlineViewRealmDataItem?
+    func getChildren()     -> [RxOutlineViewRealmDataItem]
 }

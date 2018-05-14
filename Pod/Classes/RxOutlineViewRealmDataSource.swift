@@ -121,20 +121,20 @@ open class RxOutlineViewRealmDataSource<E: Object>: NSObject, NSOutlineViewDataS
             fatalError("You have to bind a table view to the data source.")
         }
         
-        guard animated else {
-            outlineView.reloadData()
-            return
-        }
+        //guard animated else {
+        //    outlineView.reloadData()
+        //    return
+        //}
         
 //        guard let changes = changes else {
 //            outlineView.reloadData()
 //            return
 //        }
         
-        outlineView.reloadData()
+        //outlineView.reloadData()
         
-        //outlineView.beginUpdates()
-        //outlineView.removeItems(at: IndexSet(changes.deleted), inParent: <#T##Any?#>, withAnimation: <#T##NSTableView.AnimationOptions#>)
+        outlineView.beginUpdates()
+        outlineView.removeItems(at: IndexSet(changes.deleted), inParent: <#T##Any?#>, withAnimation: <#T##NSTableView.AnimationOptions#>)
         //tableView.removeRows(at: IndexSet(changes.deleted), withAnimation: rowAnimations.delete)
         //tableView.insertRows(at: IndexSet(changes.inserted), withAnimation: rowAnimations.insert)
         //outlineView.reloadData(forRowIndexes: IndexSet(changes.updated), columnIndexes: IndexSet([0]))

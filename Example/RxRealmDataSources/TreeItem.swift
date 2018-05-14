@@ -38,5 +38,8 @@ import RxRealmDataSources
         return parent
     }
     
+    func getChildren() -> [RxOutlineViewRealmDataItem] {
+        return children.toArray()
+    }
 }
 
