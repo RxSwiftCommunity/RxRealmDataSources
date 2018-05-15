@@ -51,45 +51,52 @@ open class RxOutlineViewRealmDataSource<E: Object>: NSObject, NSOutlineViewDataS
         }
     }
     
+    private func objectBy(key: Any) -> RxOutlineViewRealmDataItem? {
+        guard let items = items else { return nil }
+        guard let key = key as? String else { return nil }
+        guard let index = items.index(matching: "key = %s", key) else { return nil }
+        
+        return items[index] as? RxOutlineViewRealmDataItem
+    }
+
+    
     // MARK: - NSOutlineViewDataSource protocol
     public func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-        guard let item = item as? E else { return nil }
+        guard let object = objectBy(key: item) as? E else { return nil }
         let columnId = tableColumn?.identifier.rawValue
-        return cellFactory(outlineView, columnId, item)
+        return cellFactory(outlineView, columnId, object)
     }
     
     public func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        if item == nil {
+        guard let item = item else {
             if let rootItems = items?.filter("parent = null", 0) {
                 return rootItems.count
             }
             return 0
         }
-        if let item = item as? RxOutlineViewRealmDataItem {
-            return item.childrenCount
-        }
         
-        return 0
+        guard let object = objectBy(key: item) else { return 0 }
+        return object.childrenCount
     }
     
     public func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        if item == nil {
-            if let rootItems = items?.filter("parent = null", 0) {
-                return rootItems[index]
+        guard let item = item else {
+            guard let items = items else { return false }
+            if let rootItems = Array(items.filter("parent = null", 0)) as? [RxOutlineViewRealmDataItem] {
+                return rootItems[index].key
             }
-            return 0
+            return false
         }
-        guard let item = item as? RxOutlineViewRealmDataItem else { return false }
-        guard let child = item.childAt(idx: index) else { return false }
         
-        return child
-
+        guard let object = objectBy(key: item) else { return false }
+        guard let child = object.childAt(idx: index) else { return false}
+        
+        return child.key
     }
     
     public func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        guard let item = item as? RxOutlineViewRealmDataItem else { return false }
-        
-        return item.isExpandable
+        guard let object = objectBy(key: item) else { return false }
+        return object.isExpandable
     }
     
     // MARK: - Proxy unimplemented data source and delegate methods
@@ -118,27 +125,10 @@ open class RxOutlineViewRealmDataSource<E: Object>: NSObject, NSOutlineViewDataS
         }
         
         guard let outlineView = outlineView else {
-            fatalError("You have to bind a table view to the data source.")
+            fatalError("You have to bind a outline view to the data source.")
         }
         
-        //guard animated else {
-        //    outlineView.reloadData()
-        //    return
-        //}
-        
-//        guard let changes = changes else {
-//            outlineView.reloadData()
-//            return
-//        }
-        
-        //outlineView.reloadData()
-        
-        outlineView.beginUpdates()
-        outlineView.removeItems(at: IndexSet(changes.deleted), inParent: <#T##Any?#>, withAnimation: <#T##NSTableView.AnimationOptions#>)
-        //tableView.removeRows(at: IndexSet(changes.deleted), withAnimation: rowAnimations.delete)
-        //tableView.insertRows(at: IndexSet(changes.inserted), withAnimation: rowAnimations.insert)
-        //outlineView.reloadData(forRowIndexes: IndexSet(changes.updated), columnIndexes: IndexSet([0]))
-        //outlineView.endUpdates()
+        outlineView.reloadData()
     }
 }
 

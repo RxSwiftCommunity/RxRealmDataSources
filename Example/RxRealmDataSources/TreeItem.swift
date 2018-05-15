@@ -11,6 +11,8 @@ import RealmSwift
 import RxRealmDataSources
 
 @objcMembers class TreeItem: Object, RxOutlineViewRealmDataItem {
+    var dbgTitle: String { return title }
+    
     
     override static func primaryKey() -> String? { return "key" }
     

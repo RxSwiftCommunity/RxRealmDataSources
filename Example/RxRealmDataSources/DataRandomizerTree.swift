@@ -74,16 +74,14 @@ class DataRandomizerTree {
         if items.count > 0 {
             let item = items[items.count.random()]
             
-            print("tree item: going to delete \(item.title)")
+            let parentTitle = item.parent?.title ?? "root item"
+            print("tree item: going to delete \(item.title) of parent \(parentTitle)")
+            
             try! realm.write {
                 realm.delete(item)
             }
-            //delete?.dispose()
-            //delete = nil
         }
     }
-    
-    var delete : Disposable?
     
     func start() {
         // insert some laps
@@ -99,12 +97,11 @@ class DataRandomizerTree {
             })
             .disposed(by: bag)
         
-        delete = Observable<Int>.interval(1.1, scheduler: MainScheduler.instance)
+        Observable<Int>.interval(2.0, scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.deleteItem()
-
             })
- 
+            .disposed(by: bag)
     }
 }
 

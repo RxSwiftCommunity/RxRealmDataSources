@@ -6,6 +6,7 @@
 //
 
 public protocol RxOutlineViewRealmDataItem {
+    var  key           : String { get }
     var  childrenCount : Int    { get }
     var  isExpandable  : Bool   { get }
     var  indexInParent : Int    { get }
@@ -13,4 +14,6 @@ public protocol RxOutlineViewRealmDataItem {
     func childAt(idx: Int) -> RxOutlineViewRealmDataItem?
     func getParent()       -> RxOutlineViewRealmDataItem?
     func getChildren()     -> [RxOutlineViewRealmDataItem]
+    
+    var  dbgTitle      : String { get }
 }
