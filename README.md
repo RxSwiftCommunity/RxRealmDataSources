@@ -110,10 +110,6 @@ RxRealm is available through [CocoaPods](http://cocoapods.org). To install it, s
 pod "RxRealmDataSources", :git => 'https://github.com/serg-vinnie/RxRealmDataSources.git'
 ```
 
-## TODO
-
-* Test add platforms and add compatibility for the pod
-
 ## License
 
 This library belongs to _RxSwiftCommunity_. It has been created by Marin Todorov.
