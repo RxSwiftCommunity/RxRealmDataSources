@@ -11,9 +11,7 @@ import RealmSwift
 import RxRealmDataSources
 
 @objcMembers class TreeItem: Object, RxOutlineViewRealmDataItem {
-    var dbgTitle: String { return title }
-    
-    
+
     override static func primaryKey() -> String? { return "key" }
     
     dynamic var key             : String            = UUID().uuidString
@@ -22,7 +20,6 @@ import RxRealmDataSources
     dynamic var children        = LinkingObjects(fromType: TreeItem.self, property: "parent")
     dynamic var parent          : TreeItem?         { didSet { _indexInParent = (parent == nil) ? -1 : parent!.childrenCount } }
     dynamic var _indexInParent  : Int               = -1
-
     
     // RxOutlineViewRealmDataItem implementation
     var isExpandable    : Bool  { return childrenCount > 0 }
