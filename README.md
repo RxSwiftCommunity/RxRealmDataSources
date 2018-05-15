@@ -107,7 +107,7 @@ This library depends on __RxSwift__,  __RealmSwift__, and __RxRealm__.
 RxRealm is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod "RxRealmDataSources"
+pod "RxRealmDataSources", :git => 'https://github.com/serg-vinnie/RxRealmDataSources.git'
 ```
 
 ## TODO
