@@ -62,30 +62,30 @@ Check out the included demo app to see this in action.
 ```swift
 // create data source
 let dataSource = RxOutlineViewRealmDataSource<TreeItem>(cellIdentifier: "Title", cellType: NSTableCellView.self) {
-cell, columnId, treeItem  in
+    cell, columnId, treeItem  in
 
-guard let columnId = columnId else { return }
+    guard let columnId = columnId else { return }
 
-switch columnId {
-case "Title":
-cell.textField!.stringValue = treeItem.title
-case "Time":
-cell.textField!.stringValue = "\(treeItem.time)"
-default:
-break
-}
+    switch columnId {
+    case "Title":
+        cell.textField!.stringValue = treeItem.title
+    case "Time":
+        cell.textField!.stringValue = "\(treeItem.time)"
+    default:
+        break
+    }
 }
 dataSource.delegate = self
 
 // RxRealm to get Observable<Results>
 let realm = try! Realm(configuration: data.config)
 let items = Observable.changeset(from: realm.objects(TreeItem.self))
-.share()
+    .share()
 
 // bind to table view
 items
-.bind(to: outlineView.rx.realmChanges(dataSource))
-.disposed(by: bag)
+    .bind(to: outlineView.rx.realmChanges(dataSource))
+    .disposed(by: bag)
 ```
 
 ### Reacting to cell taps
