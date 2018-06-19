@@ -121,8 +121,8 @@ import RxRealm
 
     import Cocoa
 
-    public typealias TableCellFactory<E: Object> = (RxTableViewRealmDataSource<E>, NSTableView, Int, E) -> NSTableCellView
-    public typealias TableCellConfig<E: Object, CellType: NSTableCellView> = (CellType, Int, E) -> Void
+    public typealias TableCellFactory<E: Object> = (RxTableViewRealmDataSource<E>, NSTableView, Int, String?, E) -> NSTableCellView
+    public typealias TableCellConfig<E: Object, CellType: NSTableCellView> = (CellType, Int, String?, E) -> Void
 
     open class RxTableViewRealmDataSource<E: Object>: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
@@ -151,9 +151,9 @@ import RxRealm
 
         public init<CellType>(cellIdentifier: String, cellType: CellType.Type, cellConfig: @escaping TableCellConfig<E, CellType>) where CellType: NSTableCellView {
             self.cellIdentifier = cellIdentifier
-            self.cellFactory = { ds, tv, row, model in
+            self.cellFactory = { ds, tv, row, columnId, model in
               let cell = tv.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: tv) as! CellType
-                cellConfig(cell, row, model)
+                cellConfig(cell, row, columnId, model)
                 return cell
             }
         }
@@ -164,7 +164,8 @@ import RxRealm
         }
 
         public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-            return cellFactory(self, tableView, row, items![row])
+            let columnId = tableColumn?.identifier.rawValue
+            return cellFactory(self, tableView, row, columnId, items![row])
         }
 
         // MARK: - Proxy unimplemented data source and delegate methods
@@ -215,7 +216,7 @@ import RxRealm
             tableView.beginUpdates()
             tableView.removeRows(at: IndexSet(changes.deleted), withAnimation: rowAnimations.delete)
             tableView.insertRows(at: IndexSet(changes.inserted), withAnimation: rowAnimations.insert)
-            tableView.reloadData(forRowIndexes: IndexSet(changes.updated), columnIndexes: IndexSet([0]))
+            tableView.reloadData(forRowIndexes: IndexSet(changes.updated), columnIndexes: IndexSet(Array(0 ..< tableView.numberOfColumns)))
             tableView.endUpdates()
         }
     }

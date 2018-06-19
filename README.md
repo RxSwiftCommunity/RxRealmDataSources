@@ -1,4 +1,4 @@
-# RxRealmDataSources
+# RxRealmDataSources (fork)
 
 [![Version](https://img.shields.io/cocoapods/v/RxRealmDataSources.svg?style=flat)](http://cocoapods.org/pods/RxRealmDataSources)
 [![License](https://img.shields.io/cocoapods/l/RxRealmDataSources.svg?style=flat)](http://cocoapods.org/pods/RxRealmDataSources)
@@ -55,6 +55,38 @@ laps
     .bindTo(collectionView.rx.realmChanges(dataSource))
     .disposed(by: bag)
 ```
+### Binding to NSOutlineView
+
+Check out the included demo app to see this in action.
+
+```swift
+// create data source
+let dataSource = RxOutlineViewRealmDataSource<TreeItem>(cellIdentifier: "Title", cellType: NSTableCellView.self) {
+    cell, columnId, treeItem  in
+
+    guard let columnId = columnId else { return }
+
+    switch columnId {
+    case "Title":
+        cell.textField!.stringValue = treeItem.title
+    case "Time":
+        cell.textField!.stringValue = "\(treeItem.time)"
+    default:
+        break
+    }
+}
+dataSource.delegate = self
+
+// RxRealm to get Observable<Results>
+let realm = try! Realm(configuration: data.config)
+let items = Observable.changeset(from: realm.objects(TreeItem.self))
+    .share()
+
+// bind to table view
+items
+    .bind(to: outlineView.rx.realmChanges(dataSource))
+    .disposed(by: bag)
+```
 
 ### Reacting to cell taps
 
@@ -75,12 +107,8 @@ This library depends on __RxSwift__,  __RealmSwift__, and __RxRealm__.
 RxRealm is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod "RxRealmDataSources"
+pod "RxRealmDataSources", :git => 'https://github.com/serg-vinnie/RxRealmDataSources.git'
 ```
-
-## TODO
-
-* Test add platforms and add compatibility for the pod
 
 ## License
 

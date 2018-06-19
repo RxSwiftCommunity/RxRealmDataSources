@@ -95,6 +95,22 @@ extension Reactive where Base: NSTableView {
     }
 }
 
+extension Reactive where Base: NSOutlineView {
+    public func realmChanges<E>(_ dataSource: RxOutlineViewRealmDataSource<E>)
+        -> RealmBindObserver<E, AnyRealmCollection<E>, RxOutlineViewRealmDataSource<E>> {
+            
+            base.delegate = dataSource
+            base.dataSource = dataSource
+            
+            return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
+                if dataSource.outlineView == nil {
+                    dataSource.outlineView = self.base
+                }
+                ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
+            }
+    }
+}
+
 extension Reactive where Base: NSCollectionView {
 
     public func realmChanges<E>(_ dataSource: RxCollectionViewRealmDataSource<E>)

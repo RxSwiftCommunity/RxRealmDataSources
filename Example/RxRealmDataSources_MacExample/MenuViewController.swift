@@ -11,8 +11,8 @@ import Cocoa
 class MenuViewController: NSViewController {
     @IBOutlet var tableView: NSTableView!
 
-    let menuItems = ["Table Demo", "Collection Demo"]
-    let targetNames = ["TableViewController", "CollectionViewController"]
+    let menuItems = ["Table Demo", "Collection Demo", "Tree Demo"]
+    let targetNames = ["TableViewController", "CollectionViewController", "OutlineViewController"]
 
     override func viewWillAppear() {
         super.viewWillAppear()
@@ -22,7 +22,7 @@ class MenuViewController: NSViewController {
 
 extension MenuViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return 2
+        return 3
     }
 
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
