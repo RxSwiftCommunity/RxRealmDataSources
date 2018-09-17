@@ -29,9 +29,9 @@ import RxRealm
         public var tableView: UITableView?
         public var animated = true
         public var rowAnimations = (
-            insert: UITableViewRowAnimation.automatic,
-            update: UITableViewRowAnimation.automatic,
-            delete: UITableViewRowAnimation.automatic)
+            insert: UITableView.RowAnimation.automatic,
+            update: UITableView.RowAnimation.automatic,
+            delete: UITableView.RowAnimation.automatic)
 
         public var headerTitle: String?
         public var footerTitle: String?
