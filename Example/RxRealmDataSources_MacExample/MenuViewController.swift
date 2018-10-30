@@ -39,10 +39,10 @@ extension MenuViewController: NSTableViewDelegate {
 
     func tableViewSelectionDidChange(_ notification: Notification) {
         if tableView.selectedRow > -1 {
-            if let split = parent as? NSSplitViewController, split.childViewControllers.count > 1,
-              let targetVC = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: targetNames[tableView.selectedRow])) as? NSViewController {
-
-                split.childViewControllers.replaceSubrange(1...1, with: [targetVC])
+          let identifier = targetNames[tableView.selectedRow]
+          if let split = parent as? NSSplitViewController, split.children.count > 1,
+              let targetVC = storyboard?.instantiateController(withIdentifier: identifier) as? NSViewController {
+              split.children.replaceSubrange(1...1, with: [targetVC])
             }
         }
     }
