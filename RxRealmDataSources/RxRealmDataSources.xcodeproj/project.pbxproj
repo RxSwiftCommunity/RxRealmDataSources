@@ -109,7 +109,7 @@
 				F97BFFE12195DDA00093113C /* RealmBindObserver.swift */,
 			);
 			name = Classes;
-			path = ../../Pod/Classes;
+			path = ../Pod/Classes;
 			sourceTree = "<group>";
 		};
 		F97BFFE62195E1D70093113C /* Frameworks */ = {
