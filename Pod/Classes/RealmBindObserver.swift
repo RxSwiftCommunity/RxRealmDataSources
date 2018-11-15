@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 import RxRealm
 
+@available(*, deprecated, message: "use RxCocoa Binder instead")
 public class RealmBindObserver<O: Object, C: RealmCollection, DS>: ObserverType {
     typealias BindingType = (DS, C, RealmChangeset?) -> Void
     public typealias E = (C, RealmChangeset?)

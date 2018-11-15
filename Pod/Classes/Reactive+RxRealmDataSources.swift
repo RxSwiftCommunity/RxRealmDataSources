@@ -63,16 +63,16 @@ import Cocoa
 extension Reactive where Base: NSTableView {
 
     public func realmChanges<E>(_ dataSource: RxTableViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxTableViewRealmDataSource<E>> {
+        -> Binder<RealmChange<E>> {
 
             base.delegate = dataSource
             base.dataSource = dataSource
 
-            return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
+            return Binder(base) { tableView, element in
                 if dataSource.tableView == nil {
-                    dataSource.tableView = self.base
+                    dataSource.tableView = tableView
                 }
-                ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
+                dataSource.applyChanges(items: element.0, changes: element.1)
             }
     }
 }
@@ -80,14 +80,15 @@ extension Reactive where Base: NSTableView {
 extension Reactive where Base: NSCollectionView {
 
     public func realmChanges<E>(_ dataSource: RxCollectionViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxCollectionViewRealmDataSource<E>> {
+        -> Binder<RealmChange<E>> {
 
-            return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
-                if ds.collectionView == nil {
-                    ds.collectionView = self.base
+            base.dataSource = dataSource
+            
+            return Binder(base) { collectionView, element in
+                if dataSource.collectionView == nil {
+                    dataSource.collectionView = collectionView
                 }
-                ds.collectionView?.dataSource = ds
-                ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
+                dataSource.applyChanges(items: element.0, changes: element.1)
             }
     }
 }
