@@ -8,12 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		E6CEF4FD21D6BD82004D0FF0 /* RxRealmDataSources.h in Headers */ = {isa = PBXBuildFile; fileRef = E6CEF4FB21D6BD82004D0FF0 /* RxRealmDataSources.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6CEF50921D6BD9E004D0FF0 /* RxCollectionViewRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CEF50321D6BD9E004D0FF0 /* RxCollectionViewRealmDataSource.swift */; };
+		E6CEF50A21D6BD9E004D0FF0 /* RxOutlineViewRealmDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CEF50421D6BD9E004D0FF0 /* RxOutlineViewRealmDataItem.swift */; };
+		E6CEF50B21D6BD9E004D0FF0 /* RxOutlineViewRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CEF50521D6BD9E004D0FF0 /* RxOutlineViewRealmDataSource.swift */; };
+		E6CEF50C21D6BD9E004D0FF0 /* RxTableViewRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CEF50621D6BD9E004D0FF0 /* RxTableViewRealmDataSource.swift */; };
+		E6CEF50D21D6BD9E004D0FF0 /* Reactive+RxRealmDataSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CEF50721D6BD9E004D0FF0 /* Reactive+RxRealmDataSources.swift */; };
+		E6CEF50E21D6BD9E004D0FF0 /* RealmBindObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CEF50821D6BD9E004D0FF0 /* RealmBindObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E6CEF4F821D6BD82004D0FF0 /* RxRealmDataSources.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxRealmDataSources.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CEF4FB21D6BD82004D0FF0 /* RxRealmDataSources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxRealmDataSources.h; sourceTree = "<group>"; };
 		E6CEF4FC21D6BD82004D0FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6CEF50321D6BD9E004D0FF0 /* RxCollectionViewRealmDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewRealmDataSource.swift; sourceTree = "<group>"; };
+		E6CEF50421D6BD9E004D0FF0 /* RxOutlineViewRealmDataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxOutlineViewRealmDataItem.swift; sourceTree = "<group>"; };
+		E6CEF50521D6BD9E004D0FF0 /* RxOutlineViewRealmDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxOutlineViewRealmDataSource.swift; sourceTree = "<group>"; };
+		E6CEF50621D6BD9E004D0FF0 /* RxTableViewRealmDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewRealmDataSource.swift; sourceTree = "<group>"; };
+		E6CEF50721D6BD9E004D0FF0 /* Reactive+RxRealmDataSources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reactive+RxRealmDataSources.swift"; sourceTree = "<group>"; };
+		E6CEF50821D6BD9E004D0FF0 /* RealmBindObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmBindObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +42,7 @@
 		E6CEF4EE21D6BD82004D0FF0 = {
 			isa = PBXGroup;
 			children = (
+				E6CEF50F21D6BDB4004D0FF0 /* Classes */,
 				E6CEF4FA21D6BD82004D0FF0 /* RxRealmDataSources */,
 				E6CEF4F921D6BD82004D0FF0 /* Products */,
 			);
@@ -50,6 +63,19 @@
 				E6CEF4FC21D6BD82004D0FF0 /* Info.plist */,
 			);
 			path = RxRealmDataSources;
+			sourceTree = "<group>";
+		};
+		E6CEF50F21D6BDB4004D0FF0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E6CEF50721D6BD9E004D0FF0 /* Reactive+RxRealmDataSources.swift */,
+				E6CEF50821D6BD9E004D0FF0 /* RealmBindObserver.swift */,
+				E6CEF50321D6BD9E004D0FF0 /* RxCollectionViewRealmDataSource.swift */,
+				E6CEF50421D6BD9E004D0FF0 /* RxOutlineViewRealmDataItem.swift */,
+				E6CEF50521D6BD9E004D0FF0 /* RxOutlineViewRealmDataSource.swift */,
+				E6CEF50621D6BD9E004D0FF0 /* RxTableViewRealmDataSource.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +121,7 @@
 				TargetAttributes = {
 					E6CEF4F721D6BD82004D0FF0 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -130,6 +157,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6CEF50E21D6BD9E004D0FF0 /* RealmBindObserver.swift in Sources */,
+				E6CEF50C21D6BD9E004D0FF0 /* RxTableViewRealmDataSource.swift in Sources */,
+				E6CEF50A21D6BD9E004D0FF0 /* RxOutlineViewRealmDataItem.swift in Sources */,
+				E6CEF50D21D6BD9E004D0FF0 /* Reactive+RxRealmDataSources.swift in Sources */,
+				E6CEF50921D6BD9E004D0FF0 /* RxCollectionViewRealmDataSource.swift in Sources */,
+				E6CEF50B21D6BD9E004D0FF0 /* RxOutlineViewRealmDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +293,7 @@
 		E6CEF50121D6BD82004D0FF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -278,6 +312,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Rx.RxRealmDataSources;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -285,6 +320,7 @@
 		E6CEF50221D6BD82004D0FF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
