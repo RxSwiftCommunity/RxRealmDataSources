@@ -90,9 +90,6 @@ import RxRealm
             return tableEditingStyle != nil
         }
         
-        public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-            return commitEditingStyle != nil
-        }
         // MARK: - Applying changeset to the table view
         private let fromRow = {(row: Int) in return IndexPath(row: row, section: 0)}
 
