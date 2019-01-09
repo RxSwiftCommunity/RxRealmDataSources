@@ -19,6 +19,7 @@ import RxRealm
 
     public typealias TableCellFactory<E: Object> = (RxTableViewRealmDataSource<E>, UITableView, IndexPath, E) -> UITableViewCell
     public typealias TableCellConfig<E: Object, CellType: UITableViewCell> = (CellType, IndexPath, E) -> Void
+    public typealias TableCommitEditingStyle<E: Object> = (UITableView, UITableViewCellEditingStyle, IndexPath, E) -> Void
 
     open class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSource {
 
@@ -39,7 +40,8 @@ import RxRealm
         // MARK: - Init
         public let cellIdentifier: String
         public let cellFactory: TableCellFactory<E>
-
+        public var tableEditingStyle: TableCommitEditingStyle<E>?
+        
         public init(cellIdentifier: String, cellFactory: @escaping TableCellFactory<E>) {
             self.cellIdentifier = cellIdentifier
             self.cellFactory = cellFactory
@@ -80,6 +82,17 @@ import RxRealm
             return footerTitle
         }
 
+        public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+            tableEditingStyle?(tableView, editingStyle, indexPath, items![indexPath.row])
+        }
+        
+        func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return tableEditingStyle != nil
+        }
+        
+        public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return commitEditingStyle != nil
+        }
         // MARK: - Applying changeset to the table view
         private let fromRow = {(row: Int) in return IndexPath(row: row, section: 0)}
 
