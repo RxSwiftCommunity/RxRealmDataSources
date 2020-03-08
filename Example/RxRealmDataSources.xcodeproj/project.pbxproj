@@ -424,12 +424,13 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Demo-RxRealmDataSources_MacExample/Pods-Demo-RxRealmDataSources_MacExample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Demo-RxRealmDataSources_MacExample/Pods-Demo-RxRealmDataSources_MacExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm-macOS/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift-macOS/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-macOS/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRealm-macOS/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRealmDataSources-macOS/RxRealmDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay-macOS/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift-macOS/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -439,11 +440,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealmDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo-RxRealmDataSources_MacExample/Pods-Demo-RxRealmDataSources_MacExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Demo-RxRealmDataSources_MacExample/Pods-Demo-RxRealmDataSources_MacExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E14D2B725468BD930A30E223 /* [CP] Embed Pods Frameworks */ = {
@@ -452,12 +454,13 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Demo-RxRealmDataSources_Example/Pods-Demo-RxRealmDataSources_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Demo-RxRealmDataSources_Example/Pods-Demo-RxRealmDataSources_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm-iOS/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift-iOS/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRealm-iOS/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRealmDataSources-iOS/RxRealmDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay-iOS/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift-iOS/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -467,11 +470,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealmDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Demo-RxRealmDataSources_Example/Pods-Demo-RxRealmDataSources_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Demo-RxRealmDataSources_Example/Pods-Demo-RxRealmDataSources_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
