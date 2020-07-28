@@ -31,7 +31,7 @@ let laps = Observable.changeset(from: realm.objects(Timer.self).first!.laps)
 
 // bind to table view
 laps
-    .bindTo(tableView.rx.realmChanges(dataSource))
+    .bindTo(tableView.rx.items(dataSource: dataSource))
     .disposed(by: bag)
 ```
 
@@ -52,7 +52,7 @@ let laps = Observable.changeset(from: realm.objects(Timer.self).first!.laps)
 
 // bind to collection view
 laps
-    .bindTo(collectionView.rx.realmChanges(dataSource))
+    .bindTo(collectionView.rx.items(dataSource: dataSource))
     .disposed(by: bag)
 ```
 
@@ -61,7 +61,7 @@ laps
 The library adds an extension to table views and collection views, allowing you to easily subscribe to the cell selected delegate event. Here's a snippet from the example demo app:
 
 ```swift
-tableView.rx.realmModelSelected(Lap.self)
+tableView.rx.modelSelected(Lap.self)
   .map({ $0.text })
   .bind(to: rx.title)
   .disposed(by: bag)

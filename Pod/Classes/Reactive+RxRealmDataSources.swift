@@ -12,64 +12,46 @@ import RxSwift
 import RxCocoa
 import RxRealm
 
+public typealias RealmChange<E: RealmCollectionValue> = (AnyRealmCollection<E>, RealmChangeset?)
+
 #if os(iOS)
 // MARK: - iOS / UIKit
 
 import UIKit
 extension Reactive where Base: UITableView {
 
-    public func realmChanges<E>(_ dataSource: RxTableViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxTableViewRealmDataSource<E>> {
-
-            return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
-                if ds.tableView == nil {
-                    ds.tableView = self.base
-                }
-                ds.tableView?.dataSource = ds
-                ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
-            }
+    @available(*, deprecated, message: "use items(dataSource:) instead")
+    public func realmChanges<
+            DataSource: RxTableViewDataSourceType & UITableViewDataSource,
+            O: ObservableType>
+        (_ dataSource: DataSource)
+        -> (_ source: O)
+        -> Disposable
+        where DataSource.Element == O.E {
+        return items(dataSource: dataSource)
     }
-	
-	public func realmModelSelected<E>(_ modelType: E.Type) -> ControlEvent<E> where E: RealmSwift.Object {
-		
-		let source: Observable<E> = self.itemSelected.flatMap { [weak view = self.base as UITableView] indexPath -> Observable<E> in
-			guard let view = view, let ds = view.dataSource as? RxTableViewRealmDataSource<E> else {
-				return Observable.empty()
-			}
-			
-			return Observable.just(ds.model(at: indexPath))
-		}
-		
-		return ControlEvent(events: source)
-	}
 
+    @available(*, deprecated, renamed: "modelSelected")
+    public func realmModelSelected<E>(_ modelType: E.Type) -> ControlEvent<E> where E: RealmSwift.Object {
+        return modelSelected(modelType)
+    }
 }
 
 extension Reactive where Base: UICollectionView {
 
-    public func realmChanges<E>(_ dataSource: RxCollectionViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxCollectionViewRealmDataSource<E>> {
-
-            return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
-                if ds.collectionView == nil {
-                    ds.collectionView = self.base
-                }
-                ds.collectionView?.dataSource = ds
-                ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
-            }
+    @available(*, deprecated, message: "use items(dataSource:) instead")
+    public func realmChanges<
+            DataSource: RxCollectionViewDataSourceType & UICollectionViewDataSource,
+            O: ObservableType>
+        (_ dataSource: DataSource)
+        -> (_ source: O)
+        -> Disposable where DataSource.Element == O.E {
+        return items(dataSource: dataSource)
     }
 
+    @available(*, deprecated, renamed: "modelSelected")
     public func realmModelSelected<E>(_ modelType: E.Type) -> ControlEvent<E> where E: RealmSwift.Object {
-
-        let source: Observable<E> = self.itemSelected.flatMap { [weak view = self.base as UICollectionView] indexPath -> Observable<E> in
-            guard let view = view, let ds = view.dataSource as? RxCollectionViewRealmDataSource<E> else {
-                return Observable.empty()
-            }
-
-            return Observable.just(ds.model(at: indexPath))
-        }
-        
-        return ControlEvent(events: source)
+        return modelSelected(modelType)
     }
 }
 
@@ -81,16 +63,16 @@ import Cocoa
 extension Reactive where Base: NSTableView {
 
     public func realmChanges<E>(_ dataSource: RxTableViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxTableViewRealmDataSource<E>> {
+        -> Binder<RealmChange<E>> {
 
             base.delegate = dataSource
             base.dataSource = dataSource
 
-            return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
+            return Binder(base) { tableView, element in
                 if dataSource.tableView == nil {
-                    dataSource.tableView = self.base
+                    dataSource.tableView = tableView
                 }
-                ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
+                dataSource.applyChanges(items: element.0, changes: element.1)
             }
     }
 }
@@ -98,14 +80,15 @@ extension Reactive where Base: NSTableView {
 extension Reactive where Base: NSCollectionView {
 
     public func realmChanges<E>(_ dataSource: RxCollectionViewRealmDataSource<E>)
-        -> RealmBindObserver<E, AnyRealmCollection<E>, RxCollectionViewRealmDataSource<E>> {
+        -> Binder<RealmChange<E>> {
 
-            return RealmBindObserver(dataSource: dataSource) {ds, results, changes in
-                if ds.collectionView == nil {
-                    ds.collectionView = self.base
+            base.dataSource = dataSource
+            
+            return Binder(base) { collectionView, element in
+                if dataSource.collectionView == nil {
+                    dataSource.collectionView = collectionView
                 }
-                ds.collectionView?.dataSource = ds
-                ds.applyChanges(items: AnyRealmCollection<E>(results), changes: changes)
+                dataSource.applyChanges(items: element.0, changes: element.1)
             }
     }
 }

@@ -20,13 +20,12 @@ import RxRealm
     public typealias TableCellFactory<E: Object> = (RxTableViewRealmDataSource<E>, UITableView, IndexPath, E) -> UITableViewCell
     public typealias TableCellConfig<E: Object, CellType: UITableViewCell> = (CellType, IndexPath, E) -> Void
 
-    open class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSource {
+    open class RxTableViewRealmDataSource<E: Object>: NSObject, UITableViewDataSource, SectionedViewDataSourceType, RxTableViewDataSourceType {
 
         private var items: AnyRealmCollection<E>?
 
         // MARK: - Configuration
 
-        public var tableView: UITableView?
         public var animated = true
         public var rowAnimations = (
             insert: UITableView.RowAnimation.automatic,
@@ -55,8 +54,15 @@ import RxRealm
         }
 
         // MARK: - Data access
-        public func model(at indexPath: IndexPath) -> E {
+        public func model(at indexPath: IndexPath) throws -> Any {
             return items![indexPath.row]
+        }
+
+        // MARK: - RxTableViewDataSourceType
+        public func tableView(_ tableView: UITableView, observedEvent: Event<RealmChange<E>>) {
+            Binder(self) { dataSource, element in
+                dataSource.applyChanges(to: tableView, items: element.0, changes: element.1)
+            }.on(observedEvent)
         }
 
         // MARK: - UITableViewDataSource protocol
@@ -83,13 +89,9 @@ import RxRealm
         // MARK: - Applying changeset to the table view
         private let fromRow = {(row: Int) in return IndexPath(row: row, section: 0)}
 
-        func applyChanges(items: AnyRealmCollection<E>, changes: RealmChangeset?) {
+        func applyChanges(to tableView: UITableView, items: AnyRealmCollection<E>, changes: RealmChangeset?) {
             if self.items == nil {
                 self.items = items
-            }
-
-            guard let tableView = tableView else {
-                fatalError("You have to bind a table view to the data source.")
             }
 
             guard animated else {

@@ -18,7 +18,7 @@ extension Int {
 
 class DataRandomizer {
 
-    private let bag = DisposeBag()
+    private var bag = DisposeBag()
 
     lazy var config: Realm.Configuration = {
         var config = Realm.Configuration.defaultConfiguration
@@ -95,5 +95,9 @@ class DataRandomizer {
                 self?.deleteRow()
             })
             .disposed(by: bag)
+    }
+
+    func stop() {
+        bag = DisposeBag()
     }
 }
