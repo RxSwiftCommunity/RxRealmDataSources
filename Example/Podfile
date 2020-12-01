@@ -4,7 +4,7 @@ abstract_target 'Demo' do
   pod 'RealmSwift', '~> 10.1'
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'RxRealm', :git => 'https://github.com/iDevid/RxRealm'
+  pod 'RxRealm', :git => 'https://github.com/RxSwiftCommunity/RxRealm.git'
   pod 'RxRealmDataSources', :path => '../'
 
   target 'RxRealmDataSources_Example' do

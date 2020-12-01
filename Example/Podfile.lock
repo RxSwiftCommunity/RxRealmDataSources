@@ -10,7 +10,7 @@ PODS:
   - RxRealm (4.0.0):
     - RealmSwift (~> 10.1)
     - RxSwift (~> 5.0)
-  - RxRealmDataSources (0.3):
+  - RxRealmDataSources (0.4):
     - RealmSwift (~> 10.1)
     - RxCocoa (~> 5.1)
     - RxRealm (~> 4.0)
@@ -22,7 +22,7 @@ PODS:
 DEPENDENCIES:
   - RealmSwift (~> 10.1)
   - RxCocoa
-  - RxRealm (from `https://github.com/iDevid/RxRealm`)
+  - RxRealm (from `https://github.com/RxSwiftCommunity/RxRealm.git`)
   - RxRealmDataSources (from `../`)
   - RxSwift
 
@@ -36,24 +36,24 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   RxRealm:
-    :git: https://github.com/iDevid/RxRealm
+    :git: https://github.com/RxSwiftCommunity/RxRealm.git
   RxRealmDataSources:
     :path: "../"
 
 CHECKOUT OPTIONS:
   RxRealm:
-    :commit: fe7687c5db99972f3ef36832ac2b61d09ca5594d
-    :git: https://github.com/iDevid/RxRealm
+    :commit: 1b49bc0a1a2cdf18a514140787f34d724fc3fb0e
+    :git: https://github.com/RxSwiftCommunity/RxRealm.git
 
 SPEC CHECKSUMS:
   Realm: 80f4fb2971ccb9adc27a47d0955ae8e533a7030b
   RealmSwift: 0e566ca714edb377bba8ea0811eafcea0b93734e
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRealm: 684c1d5e9dc7a075fa925894fc042f1aecc18ac7
-  RxRealmDataSources: 3fd285e0ebb4de8501665d8a40c12301cd181258
+  RxRealmDataSources: 48365609ac0103581af9fae5a8989a720db02e18
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 338369279a7ea07988f784d993911dc0705f11c3
+PODFILE CHECKSUM: 9cf6a1838aa544b30d714d8e75e5556bf3e430e9
 
 COCOAPODS: 1.10.0
