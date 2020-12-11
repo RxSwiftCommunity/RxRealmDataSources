@@ -72,10 +72,16 @@ tableView.rx.realmModelSelected(Lap.self)
 This library depends on __RxSwift__,  __RealmSwift__, and __RxRealm__.
 
 #### CocoaPods
-RxRealm is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+RxRealmDataSources is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod "RxRealmDataSources"
+```
+
+#### Carthage
+
+```ruby
+github "RxSwiftCommunity/RxRealmDataSources"
 ```
 
 ## TODO
