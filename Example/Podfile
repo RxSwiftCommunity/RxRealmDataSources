@@ -1,14 +1,11 @@
 use_frameworks!
 
 abstract_target 'Demo' do
-  pod 'RealmSwift', '~> 5.1'
-  pod 'RxSwift', '~> 5.1'
-  pod 'RxCocoa', '~> 5.1'
-  pod 'RxRealm', '~> 3.0'
+
   pod 'RxRealmDataSources', :path => '../'
 
   target 'RxRealmDataSources_Example' do
-    platform :ios, '9.0'
+    platform :ios, '11.0'
   end
 
   target 'RxRealmDataSources_MacExample' do
